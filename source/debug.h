@@ -11,7 +11,7 @@ namespace tiny_au3
 class Debug
 {
 public:
-    Debug(const char* log_file);
+    Debug(const std::string& log_file);
     virtual ~Debug();
 
     void Log(const char* fmt, ...) const;

@@ -9,15 +9,15 @@
 using namespace std;
 using namespace tiny_au3;
 
-static const char* kDefaultLogfile = "/dev/null";
+static const string kDefaultLogfile = "/dev/null";
 
-Debug::Debug(const char* log_file)
+Debug::Debug(const string& log_file)
 {
 #ifdef __DEBUG__
-    if ( strlen(log_file) != 0 )
-        file_.open(log_file, ios::out | ios::app);
+    if ( ! log_file.empty() )
+        file_.open(log_file.c_str(), ios::out | ios::app);
     else
-        file_.open(kDefaultLogfile, ios::out | ios::app);
+        file_.open(kDefaultLogfile.c_str(), ios::out | ios::app);
 #endif
 }
 

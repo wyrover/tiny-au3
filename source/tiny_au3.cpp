@@ -10,7 +10,8 @@ void PrintUsage()
 {
     cout << "Usage: tiny-au3 [options] <input-file>" << endl;
     cout << "Options:" << endl;
-    cout << "\t-i FILE\t\tInterpret the specified file" << endl;
+    cout << "\t-i INPUT\t\tInterpret the specified file" << endl;
+    cout << "\t-l LOG\t\tWrite debug messages to the log file" << endl;
     cout << "\t-v\t\tShow program version and exit" << endl;
     cout << "\t-h\t\tPrint help and exit" << endl;
 }
@@ -38,16 +39,20 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    string filename = "";
+    string input_file = "";
     if ( options.IsOptionExist("-i") )
-        filename = options.GetString("-i");
+        input_file = options.GetString("-i");
     else
     {
         PrintUsage();
         return 1;
     }
 
-    Script script(filename);
+    string log_file = "";
+    if ( options.IsOptionExist("-l") )
+        log_file = options.GetString("-l");
+
+    Script script(log_file, input_file);
 
     script.Execute();
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-../source/tiny-au3 -i ../tests/Abs.au3
+../source/tiny-au3 -l debug.log -i ../tests/Abs.au3
