@@ -8,14 +8,10 @@ cmake_minimum_required(VERSION 2.6)
 project(tiny-au3)
 
 set(COMMON_INCLUDE_DIRS
-    ${PROJECT_SOURCE_DIR}/source/client
-    ${PROJECT_SOURCE_DIR}/source/common
-    ${PROJECT_SOURCE_DIR}/source/server)
+    ${PROJECT_SOURCE_DIR}/source)
 
 set(COMMON_LIBDIR
-    ${PROJECT_SOURCE_DIR}/source/client
-    ${PROJECT_SOURCE_DIR}/source/common
-    ${PROJECT_SOURCE_DIR}/source/server)
+    ${PROJECT_SOURCE_DIR}/source)
 
 # Build type by default is Release
 if(NOT CMAKE_BUILD_TYPE)
@@ -34,12 +30,3 @@ endif(UNIX)
 
 # Subdirs
 add_subdirectory(source)
-add_subdirectory(test)
-add_subdirectory(conf)
-
-# Module
-add_custom_target(server ALL
-   COMMAND make -f ${PROJECT_SOURCE_DIR}/source/server/Makefile
-   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/source/server)
-
-include(CMakeListsDeb.txt)
