@@ -3,23 +3,17 @@
 
 #include <fstream>
 
-#include "types_tiny_au3.h"
-
 namespace tiny_au3
 {
 
 class Debug
 {
 public:
-    Debug(const std::string& log_file);
-    virtual ~Debug();
-
-    void Log(const char* fmt, ...) const;
+    static void Init(const std::string& log_file);
+    static void Log(const char* fmt, ...);
 
 private:
-    mutable std::ofstream file_;
-
-    DISALLOW_COPY_AND_ASSIGN(Debug);
+    static std::ofstream file_;
 };
 
 }

@@ -2,6 +2,7 @@
 
 #include "program_options.h"
 #include "script.h"
+#include "debug.h"
 
 using namespace std;
 using namespace tiny_au3;
@@ -52,7 +53,9 @@ int main(int argc, char *argv[])
     if ( options.IsOptionExist("-l") )
         log_file = options.GetString("-l");
 
-    Script script(log_file, input_file);
+    Debug::Init(log_file);
+
+    Script script(input_file);
 
     script.Execute();
 

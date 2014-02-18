@@ -1,7 +1,5 @@
 #include "debug.h"
 
-#include <iostream>
-
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
@@ -11,7 +9,10 @@ using namespace tiny_au3;
 
 static const string kDefaultLogfile = "/dev/null";
 
-Debug::Debug(const string& log_file)
+std::ofstream Debug::file_;
+
+
+void Debug::Init(const string& log_file)
 {
 #ifdef __DEBUG__
     if ( ! log_file.empty() )
@@ -21,14 +22,7 @@ Debug::Debug(const string& log_file)
 #endif
 }
 
-Debug::~Debug()
-{
-#ifdef __DEBUG__
-    file_.close();
-#endif
-}
-
-void Debug::Log(const char* fmt, ...) const
+void Debug::Log(const char* fmt, ...)
 {
 #ifdef __DEBUG__
     char buf[4096];

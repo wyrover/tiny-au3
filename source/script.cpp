@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 
+#include "debug.h"
+
 using namespace std;
 using namespace tiny_au3;
 
@@ -14,7 +16,7 @@ void Script::Execute()
     string line;
     while ( getline(infile, line) )
     {
-        Log("line = %s\n", line.c_str());
+        Debug::Log("line = %s\n", line.c_str());
 
         lexer_.Process(line);
     }
