@@ -11,11 +11,12 @@ namespace tiny_au3
 class Script
 {
 public:
-    Script() {}
+    Script(std::string& filename) : filename_(filename) {}
 
     void Execute();
 
 private:
+    std::string filename_;
     Lexer lexer_;
 };
 

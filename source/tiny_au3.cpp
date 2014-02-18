@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "program_options.h"
+#include "script.h"
 
 using namespace std;
 using namespace tiny_au3;
@@ -9,6 +10,7 @@ void PrintUsage()
 {
     cout << "Usage: tiny-au3 [options] <input-file>" << endl;
     cout << "Options:" << endl;
+    cout << "\t-i FILE\t\tInterpret the specified file" << endl;
     cout << "\t-v\t\tShow program version and exit" << endl;
     cout << "\t-h\t\tPrint help and exit" << endl;
 }
@@ -36,7 +38,18 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    /* FIXME: Implement script input file processing */
+    string filename = "";
+    if ( options.IsOptionExist("-i") )
+        filename = options.GetString("-i");
+    else
+    {
+        PrintUsage();
+        return 1;
+    }
+
+    Script script(filename);
+
+    script.Execute();
 
     return 0;
 }
