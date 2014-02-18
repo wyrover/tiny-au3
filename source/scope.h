@@ -19,7 +19,7 @@ public:
     typedef std::map<std::string, Variable> VariableMap;
 
 public:
-    Scope() {}
+    Scope(ScopeType type) : type_(type) {}
 
 private:
     ScopeType type_;
