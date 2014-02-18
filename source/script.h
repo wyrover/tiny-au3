@@ -4,6 +4,7 @@
 #include <string>
 
 #include "lexer.h"
+#include "scope.h"
 
 namespace tiny_au3
 {
@@ -17,6 +18,7 @@ public:
 
 private:
     std::string filename_;
+    Scope local_;
     Lexer lexer_;
 };
 
