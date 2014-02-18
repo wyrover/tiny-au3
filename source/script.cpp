@@ -16,8 +16,6 @@ void Script::Execute()
     string line;
     while ( getline(infile, line) )
     {
-        Debug::Log("line = %s\n", line.c_str());
-
         lexer_.Process(line);
     }
 }
