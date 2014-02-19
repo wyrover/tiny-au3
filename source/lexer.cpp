@@ -8,6 +8,7 @@
 
 #include "types_tiny_au3.h"
 #include "debug.h"
+#include "keywords.h"
 
 using namespace std;
 using namespace tiny_au3;
@@ -61,8 +62,8 @@ Token CreateToken(const string& word)
     if (IsKeyword(word))
     {
         Token result(kKeywordToken);
-        /* FIXME: Set keyword code instead the text */
-        result.SetValue(word);
+        /* FIXME: Process missing keywords */
+        result.SetValue(Keywords::GetCode(word));
         return result;
     }
 
