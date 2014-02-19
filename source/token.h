@@ -8,7 +8,8 @@ namespace tiny_au3
 
 enum TokenType
 {
-    kVariableToken = 0,
+    kUndefinedToken = 0,
+    kVariableToken,
     kNumberToken,
     kStringToken,
     kKeywordToken

@@ -74,14 +74,20 @@ Token CreateToken(const string& word)
         result.SetValue(word);
         return result;
     }
+
+    return Token(kUndefinedToken);
 }
 
 BINARY_FUNCTOR(ProcessWord, string, word, Lexer::TokenList&, tokens)
     tokens.push_back(CreateToken(word));
 END_BINARY_FUNCTOR
 
+
 void Lexer::Process(const string& line)
 {
+    if ( line.empty() )
+        return;
+
     Debug::Log("%s\n", line.c_str());
 
     StringList words;

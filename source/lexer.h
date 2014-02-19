@@ -16,8 +16,6 @@ public:
     typedef std::list<std::string> StringList;
 
 public:
-    Lexer() {}
-
     void Process(const std::string& line);
 
 private:

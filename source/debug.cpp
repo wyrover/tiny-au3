@@ -3,14 +3,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+#include <assert.h>
 
 using namespace std;
 using namespace tiny_au3;
 
 static const string kDefaultLogfile = "/dev/null";
 
-std::ofstream Debug::file_;
-
+ofstream Debug::file_;
 
 void Debug::Init(const string& log_file)
 {
@@ -25,6 +25,7 @@ void Debug::Init(const string& log_file)
 void Debug::Log(const char* fmt, ...)
 {
 #ifdef __DEBUG__
+    assert( file_.is_open() );
     char buf[4096];
     va_list arg_list;
     va_start(arg_list, fmt);
