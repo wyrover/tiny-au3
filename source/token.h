@@ -8,13 +8,14 @@ enum TokenType
 {
     kVariableToken = 0,
     kNumberToken,
-    kStringToken
+    kStringToken,
+    kKeywordToken
 };
 
 class Token
 {
 public:
-    Token() {}
+    Token(const TokenType& type) : type_(type) {}
 
 private:
     TokenType type_;

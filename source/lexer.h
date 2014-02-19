@@ -13,6 +13,8 @@ class Lexer
 {
 public:
     typedef std::list<Token> TokenList;
+    typedef std::list<std::string> StringList;
+
 public:
     Lexer() {}
 
