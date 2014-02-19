@@ -1,5 +1,6 @@
 #include "keywords.h"
 
+#include "functions.h"
 
 using namespace std;
 using namespace tiny_au3;
@@ -15,8 +16,10 @@ Keywords::KeywordMap Keywords::CreateMap()
 
 KeywordCode Keywords::GetCode(const string& keyword)
 {
-    if (key_map_.count(keyword) != 0)
-        return key_map_[keyword];
+    string upper_key = StringToUpper(keyword);
+
+    if (key_map_.count(upper_key) != 0)
+        return key_map_[upper_key];
     else
         return kUndefinedKey;
 }
