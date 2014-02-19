@@ -62,7 +62,7 @@ Token CreateToken(const string& word)
     if (IsKeyword(word))
     {
         Token result(kKeywordToken);
-        /* FIXME: Process missing keywords */
+        /* FIXME: Show error message on processing missing keywords */
         result.SetValue(Keywords::GetCode(word));
         return result;
     }
