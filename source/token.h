@@ -15,7 +15,10 @@ enum TokenType
 class Token
 {
 public:
-    Token(const TokenType& type) : type_(type) {}
+    Token(const TokenType& type) : type_(type) {};
+
+    void SetValue(const std::string& value) {};
+    void SetValue(const int& value) {};
 
 private:
     TokenType type_;
