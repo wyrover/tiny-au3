@@ -6,6 +6,7 @@ set(tiny_au3_SRCS
     lexer.cpp
     program_options.cpp
     script.cpp
+    token.cpp
     tiny_au3.cpp)
 
 add_executable(tiny-au3 ${tiny_au3_SRCS})
