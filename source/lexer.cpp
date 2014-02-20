@@ -40,6 +40,12 @@ bool IsNumber(const string& word)
     return (it == word.end());
 }
 
+bool IsComment(const string& line)
+{
+    /* FIXME: Comment must be placed in any position */
+    return (line[0] == ';');
+}
+
 Token CreateToken(const string& word)
 {
     if (IsNumber(word))
@@ -76,7 +82,7 @@ END_BINARY_FUNCTOR
 
 void Lexer::Process(const string& line)
 {
-    if ( line.empty() )
+    if ( line.empty() || IsComment(line) )
         return;
 
     Debug::Log("%s\n", line.c_str());
