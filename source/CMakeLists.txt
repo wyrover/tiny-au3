@@ -7,6 +7,7 @@ set(tiny_au3_SRCS
     functions.cpp
     keywords.cpp
     lexer.cpp
+    parser.cpp
     program_options.cpp
     script.cpp
     token.cpp

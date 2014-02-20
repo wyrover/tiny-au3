@@ -13,9 +13,6 @@ enum VariableType
 
 class Variable
 {
-public:
-    Variable() {}
-
 private:
     VariableType type_;
 };
