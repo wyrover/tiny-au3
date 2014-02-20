@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 
+#include "keywords.h"
+
 namespace tiny_au3
 {
 
@@ -11,7 +13,7 @@ enum ErrorCode
 {
     kUndefinedError = 0,
     kTokenError,
-    kKeywordError
+    kKeywordError,
 };
 
 class Error
@@ -23,6 +25,10 @@ public:
     static ErrorMap CreateMap();
     static void Print(const ErrorCode& code, const std::string& filename,
                       const size_t line_number, const std::string& word);
+
+    static void Print(const ErrorCode& code, const std::string& filename,
+                      const size_t line_number, const KeywordCode& keyword);
+
 private:
     static ErrorMap error_map_;
 };

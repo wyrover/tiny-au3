@@ -24,6 +24,7 @@ private:
     VariableTable var_table_;
 
     void ProcessVariable(const Lexer::TokenList& tokens);
+    void Execute(const VariableOperation& operaton);
 };
 
 }

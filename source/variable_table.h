@@ -15,8 +15,7 @@ public:
     typedef std::map<std::string, Variable> VariableMap;
 
 public:
-    void CreateVariable(const std::string& name);
-    void SetVariable(const std::string& name);
+    void SetVariable(const std::string& name, const std::string& value);
 
 private:
     VariableType type_;

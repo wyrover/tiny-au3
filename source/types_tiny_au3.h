@@ -1,6 +1,8 @@
 #ifndef TYPES_TINY_AU3_H
 #define TYPES_TINY_AU3_H
 
+#include <sstream>
+
 namespace tiny_au3
 {
 
@@ -22,6 +24,8 @@ struct Name : public binary_function<type1, type2, void> \
     } \
 };
 
+#define INT_TO_STR(x) \
+    dynamic_cast<std::ostringstream&>((std::ostringstream() << std::dec << x )).str()
 }
 
 #endif

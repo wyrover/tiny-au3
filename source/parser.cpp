@@ -48,6 +48,19 @@ void Parser::ProcessVariable(const Lexer::TokenList& tokens)
 
     for_each(tokens.begin(), tokens.end(),
              bind2nd(ProcessVariableImpl(), operation));
+
+    Execute(operation);
+}
+
+void Parser::Execute(const VariableOperation& operation)
+{
+    if ( operation.code_ == kEqualKey )
+    {
+        var_table_.SetVariable(operation.var_name_, operation.var_value_);
+        return;
+    }
+
+    Error::Print(kKeywordError, "", 0, operation.code_);
 }
 
 void Parser::Process(const Lexer::TokenList& tokens)

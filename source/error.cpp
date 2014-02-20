@@ -3,6 +3,8 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "types_tiny_au3.h"
+
 using namespace std;
 using namespace tiny_au3;
 
@@ -30,5 +32,11 @@ void Error::Print(const ErrorCode& code, const std::string& filename,
         cerr << filename << ":" << line_number << ": error `"
              << word << "`" << error_map_[kUndefinedError] << endl;
     exit(1);
+}
+
+void Error::Print(const ErrorCode& code, const std::string& filename,
+                  const size_t line_number, const KeywordCode& keyword)
+{
+    Print(code, filename, line_number, INT_TO_STR(keyword));
 }
 
