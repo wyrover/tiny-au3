@@ -12,6 +12,8 @@ Keywords::KeywordMap Keywords::CreateMap()
     KeywordMap result;
 
     result["LOCAL"] = kLocalKey;
+
+    return result;
 }
 
 KeywordCode Keywords::GetCode(const string& keyword)
