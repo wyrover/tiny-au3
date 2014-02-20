@@ -15,10 +15,10 @@ public:
     typedef std::map<std::string, Variable> VariableMap;
 
 public:
-    void SetVariable(const std::string& name, const std::string& value);
+    void SetVariable(const std::string& name, const Variable& variable);
 
 private:
-    VariableType type_;
+    VariableMap variables_;
 };
 
 }

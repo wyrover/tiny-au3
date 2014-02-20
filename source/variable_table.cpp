@@ -6,7 +6,7 @@ using namespace std;
 using namespace tiny_au3;
 
 
-void VariableTable::SetVariable(const string& name, const string& value)
+void VariableTable::SetVariable(const string& name, const Variable& variable)
 {
-    /* FIXME: Implement this method */
+    variables_[name] = variable;
 }

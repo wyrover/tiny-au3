@@ -29,9 +29,14 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, VariableOperation&, operation)
 
     if ( token.GetType() == kNumberToken )
     {
-        operation.var_value_ = token.GetValue();
+        /* FIXME: Implement double variable processing */
+        Variable variable(kIntVariable);
+        variable.SetValue(token.GetValue());
+        operation.variable_ = variable;
         return;
     }
+
+    /* FIXME: Implement string variable processing */
 
     if ( token.GetType() == kKeywordToken )
     {
@@ -56,7 +61,7 @@ void Parser::Execute(const VariableOperation& operation)
 {
     if ( operation.code_ == kEqualKey )
     {
-        var_table_.SetVariable(operation.var_name_, operation.var_value_);
+        var_table_.SetVariable(operation.var_name_, operation.variable_);
         return;
     }
 

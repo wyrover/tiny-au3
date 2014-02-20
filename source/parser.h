@@ -11,7 +11,7 @@ namespace tiny_au3
 struct VariableOperation
 {
     std::string var_name_;
-    std::string var_value_;
+    Variable variable_;
     KeywordCode code_;
 };
 
