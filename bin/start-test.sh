@@ -2,4 +2,5 @@
 
 . clean.sh
 
-gdb --args ../source/tiny-au3 -l debug.log -i ../tests/local.au3
+#gdb --args \
+    ../source/tiny-au3 -l debug.log -i ../tests/local.au3

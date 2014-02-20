@@ -8,6 +8,7 @@
 
 #include "types_tiny_au3.h"
 #include "debug.h"
+#include "error.h"
 #include "keywords.h"
 
 using namespace std;
@@ -75,6 +76,7 @@ Token CreateToken(const string& word)
         return result;
     }
 
+    Error::Print(kTokenError, "", 0, word);
     return Token(kUndefinedToken);
 }
 

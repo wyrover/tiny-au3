@@ -3,6 +3,7 @@ link_directories(${COMMON_LIBDIR})
 
 set(tiny_au3_SRCS
     debug.cpp
+    error.cpp
     functions.cpp
     keywords.cpp
     lexer.cpp
