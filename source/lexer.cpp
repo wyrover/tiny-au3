@@ -17,17 +17,7 @@ using namespace tiny_au3;
 
 bool IsKeyword(const string& word)
 {
-    string::const_iterator it = word.begin();
-
-    while (it != word.end())
-    {
-         if ( ! isalnum(*it) && (*it != '_') )
-             break;
-
-         ++it;
-    }
-
-    return (it == word.end());
+    return (Keywords::GetCode(word) != kUndefinedKey);
 }
 
 bool IsVariable(const string& word)
@@ -63,7 +53,6 @@ Token CreateToken(const string& word)
     if (IsKeyword(word))
     {
         Token result(kKeywordToken);
-        /* FIXME: Show error message on processing missing keywords */
         result.SetValue(Keywords::GetCode(word));
         return result;
     }

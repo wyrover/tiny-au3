@@ -10,7 +10,8 @@ namespace tiny_au3
 enum KeywordCode
 {
     kUndefinedKey = 0,
-    kLocalKey
+    kLocalKey,
+    kEqualKey
 };
 
 class Keywords

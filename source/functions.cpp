@@ -11,6 +11,8 @@ string tiny_au3::StringToUpper(const string& str)
 {
     string result("");
 
+    result.resize(str.length());
+
     transform(str.begin(), str.end(), result.begin(), ::toupper);
 
     return result;
