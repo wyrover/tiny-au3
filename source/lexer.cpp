@@ -31,7 +31,7 @@ bool IsNumber(const string& word)
 
     while (it != word.end())
     {
-         if ( ! isdigit(*it) && (*it != '.') )
+         if ( ! isdigit(*it) && (*it != '.') && (*it != '-') )
              break;
 
          ++it;
