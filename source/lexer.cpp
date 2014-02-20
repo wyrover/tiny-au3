@@ -52,14 +52,14 @@ Token CreateToken(const string& word)
     {
         Token result(kNumberToken);
         /* FIXME: Process the double and long variables */
-        result.SetValue(atoi(word.c_str()));
+        result.SetValue(word);
         return result;
     }
 
     if (IsKeyword(word))
     {
         Token result(kKeywordToken);
-        result.SetValue(Keywords::GetCode(word));
+        result.SetCode(Keywords::GetCode(word));
         return result;
     }
 

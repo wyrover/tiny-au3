@@ -8,15 +8,25 @@ using namespace tiny_au3;
 
 void Token::SetValue(const std::string& value)
 {
-    string_ = value;
+    value_ = value;
 }
 
-void Token::SetValue(const int& value)
+void Token::SetCode(const KeywordCode& code)
 {
-    integer_ = value;
+    code_ = code;
+}
+
+string Token::GetValue() const
+{
+    return value_;
 }
 
 TokenType Token::GetType() const
 {
     return type_;
+}
+
+KeywordCode Token::GetCode() const
+{
+    return code_;
 }

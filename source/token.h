@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "keywords.h"
+
 namespace tiny_au3
 {
 
@@ -21,14 +23,16 @@ public:
     Token(const TokenType& type) : type_(type) {};
 
     void SetValue(const std::string& value);
-    void SetValue(const int& value);
+    void SetCode(const KeywordCode& code);
 
     TokenType GetType() const;
+    std::string GetValue() const;
+    KeywordCode GetCode() const;
 
 private:
     TokenType type_;
-    int integer_;
-    std::string string_;
+    KeywordCode code_;
+    std::string value_;
 
 };
 
