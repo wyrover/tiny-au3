@@ -16,3 +16,7 @@ void Token::SetValue(const int& value)
     integer_ = value;
 }
 
+TokenType Token::GetType() const
+{
+    return type_;
+}

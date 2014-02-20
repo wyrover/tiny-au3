@@ -23,6 +23,8 @@ public:
     void SetValue(const std::string& value);
     void SetValue(const int& value);
 
+    TokenType GetType() const;
+
 private:
     TokenType type_;
     int integer_;
