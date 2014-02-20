@@ -17,6 +17,8 @@ void Script::Execute()
     while ( getline(infile, line) )
     {
         lexer_.Process(line);
+
+        parser_.Process(lexer_.GetTokens());
     }
 }
 

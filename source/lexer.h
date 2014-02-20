@@ -17,9 +17,10 @@ public:
 
 public:
     void Process(const std::string& line);
+    TokenList& GetTokens() const;
 
 private:
-    TokenList tokens_;
+    mutable TokenList tokens_;
 };
 
 }

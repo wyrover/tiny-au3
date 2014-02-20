@@ -4,6 +4,7 @@
 #include <string>
 
 #include "lexer.h"
+#include "parser.h"
 
 namespace tiny_au3
 {
@@ -19,6 +20,7 @@ public:
 private:
     std::string input_file_;
     Lexer lexer_;
+    Parser parser_;
 };
 
 }

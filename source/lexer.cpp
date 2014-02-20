@@ -98,3 +98,7 @@ void Lexer::Process(const string& line)
              bind2nd(ProcessWord(), tokens_));
 }
 
+Lexer::TokenList& Lexer::GetTokens() const
+{
+    return tokens_;
+}
