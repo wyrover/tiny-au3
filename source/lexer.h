@@ -13,15 +13,16 @@ namespace tiny_au3
 class Lexer
 {
 public:
-    typedef std::vector<Token> TokenList;
+    typedef std::vector<Token> TokenArray;
+    typedef std::vector<TokenArray> TokenContainer;
     typedef std::list<std::string> StringList;
 
 public:
     void Process(const std::string& line);
-    TokenList& GetTokens() const;
+    TokenContainer& GetTokens() const;
 
 private:
-    mutable TokenList tokens_;
+    mutable TokenContainer tokens_;
 };
 
 }
