@@ -71,14 +71,18 @@ Token CreateToken(const string& word)
         return result;
     }
 
-    Error::Print(kTokenError, "", 0, word);
     return Token(kUndefinedToken);
 }
 
-BINARY_FUNCTOR(ProcessWord, string, word, Lexer::TokenArray&, token_array)
-    token_array.push_back(CreateToken(word));
-END_BINARY_FUNCTOR
+void Lexer::ProcessWord(const string word)
+{
+    Token token = CreateToken(word);
 
+    if (token.GetType() == kUndefinedToken)
+        Error::Print(kTokenError, "", tokens_.size(), word);
+
+    tokens_.back().push_back(CreateToken(word));
+}
 
 void Lexer::Process(const string& line)
 {
@@ -96,7 +100,7 @@ void Lexer::Process(const string& line)
 
     tokens_.push_back(TokenArray());
     for_each(words.begin(), words.end(),
-             bind2nd(ProcessWord(), tokens_.back()));
+             bind1st(mem_fun(&Lexer::ProcessWord), this));
 }
 
 Lexer::TokenContainer& Lexer::GetTokens() const

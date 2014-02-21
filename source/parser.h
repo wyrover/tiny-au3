@@ -19,11 +19,11 @@ class Parser
 {
 public:
     void Process(const Lexer::TokenContainer& tokens);
-    void ProcessToken(const Lexer::TokenArray token_array);
 
 private:
     VariableTable var_table_;
 
+    void ProcessToken(const Lexer::TokenArray token_array);
     void ProcessVariable(const Lexer::TokenArray& token_array);
     void Execute(const VariableOperation& operaton);
 };

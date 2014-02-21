@@ -19,10 +19,13 @@ public:
 
 public:
     void Process(const std::string& line);
+
     TokenContainer& GetTokens() const;
 
 private:
     mutable TokenContainer tokens_;
+
+    void ProcessWord(const std::string word);
 };
 
 }
