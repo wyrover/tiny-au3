@@ -22,7 +22,19 @@ bool IsKeyword(const string& word)
 
 bool IsVariable(const string& word)
 {
-    return (word[0] == '$');
+    return (*word.begin() == '$');
+}
+
+bool IsStringBegin(const string& word)
+{
+    char first = *word.begin();
+    return (first == '"' || first == '\'');
+}
+
+bool IsStringEnd(const string& word)
+{
+    char last = *word.rbegin();
+    return (last == '"' || last == '\'');
 }
 
 bool IsNumber(const string& word)
@@ -46,8 +58,34 @@ bool IsComment(const string& line)
     return (line[0] == ';');
 }
 
+Token CreateStringToken(const string& word)
+{
+    Token result(kStringToken);
+    /* FIXME: Remove the begin and end quotes */
+    result.AppendValue(word);
+    return result;
+}
+
 Token CreateToken(const string& word)
 {
+    static bool is_string = false;
+
+    if ( IsStringBegin(word) && ! is_string )
+    {
+        is_string = true;
+        return CreateStringToken(word);
+    }
+    else
+        return Token(kUndefinedToken);
+
+    if ( IsStringEnd(word) && is_string )
+    {
+        is_string = false;
+        return CreateStringToken(word);
+    }
+    else
+        return Token(kUndefinedToken);
+
     if (IsNumber(word))
     {
         Token result(kNumberToken);

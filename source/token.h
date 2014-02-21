@@ -23,6 +23,7 @@ public:
     Token(const TokenType& type) : type_(type) {};
 
     void SetValue(const std::string& value);
+    void AppendValue(const std::string& value);
     void SetCode(const KeywordCode& code);
 
     TokenType GetType() const;
