@@ -10,7 +10,7 @@ class Debug
 {
 public:
     static void Init(const std::string& log_file);
-    static void Log(const char* fmt, ...);
+    static void Print(const char* fmt, ...);
 
 private:
     static std::ofstream file_;

@@ -36,7 +36,13 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, VariableOperation&, operation)
         return;
     }
 
-    /* FIXME: Implement string variable processing */
+    if ( token.GetType() == kStringToken )
+    {
+        Variable variable(kStringVariabie);
+        variable.SetValue(token.GetValue());
+        operation.variable_ = variable;
+        return;
+    }
 
     if ( token.GetType() == kKeywordToken )
     {
@@ -61,6 +67,7 @@ void Parser::Execute(const VariableOperation& operation)
 {
     if ( operation.code_ == kEqualKey )
     {
+        Debug::Print("var_name = %s var_value = %s\n", operation.var_name_.c_str(), operation.variable_.GetValue().c_str());
         var_table_.SetVariable(operation.var_name_, operation.variable_);
         return;
     }

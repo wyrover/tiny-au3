@@ -22,7 +22,7 @@ void Debug::Init(const string& log_file)
 #endif
 }
 
-void Debug::Log(const char* fmt, ...)
+void Debug::Print(const char* fmt, ...)
 {
 #ifdef __DEBUG__
     assert( file_.is_open() );

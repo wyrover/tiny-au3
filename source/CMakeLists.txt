@@ -12,6 +12,7 @@ set(tiny_au3_SRCS
     script.cpp
     token.cpp
     tiny_au3.cpp
+    variable.cpp
     variable_table.cpp)
 
 add_executable(tiny-au3 ${tiny_au3_SRCS})

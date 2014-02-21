@@ -70,21 +70,29 @@ Token CreateToken(const string& word)
 {
     static bool is_string = false;
 
-    if ( IsStringBegin(word) && ! is_string )
+    if ( IsStringBegin(word) )
     {
-        is_string = true;
-        return CreateStringToken(word);
+        if ( ! is_string )
+        {
+            is_string = true;
+            return CreateStringToken(word);
+        }
+        else
+            return Token(kUndefinedToken);
     }
-    else
-        return Token(kUndefinedToken);
 
-    if ( IsStringEnd(word) && is_string )
+    if ( IsStringEnd(word) )
     {
-        is_string = false;
-        return CreateStringToken(word);
+        if (  is_string )
+        {
+            is_string = false;
+            return CreateStringToken(word);
+        }
+        else
+            return Token(kUndefinedToken);
     }
-    else
-        return Token(kUndefinedToken);
+    else if ( is_string )
+        return CreateStringToken(word);
 
     if (IsNumber(word))
     {
@@ -127,7 +135,7 @@ void Lexer::Process(const string& line)
     if ( line.empty() || IsComment(line) )
         return;
 
-    Debug::Log("%s\n", line.c_str());
+    Debug::Print("%s\n", line.c_str());
 
     StringList words;
 

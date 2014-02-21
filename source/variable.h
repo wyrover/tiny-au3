@@ -1,6 +1,8 @@
 #ifndef VARIABLE_H
 #define VARIABLE_H
 
+#include <string>
+
 namespace tiny_au3
 {
 
@@ -17,10 +19,12 @@ class Variable
 public:
     Variable(const VariableType& type = kNoInitVariable) : type_(type) {};
 
-    void SetValue(const std::string& value) {};
+    void SetValue(const std::string& value);
+    std::string GetValue() const;
 
 private:
     VariableType type_;
+    std::string value_;
 };
 
 }
