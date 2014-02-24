@@ -13,6 +13,11 @@ Keywords::KeywordMap Keywords::CreateMap()
 
     result["LOCAL"] = kLocalKey;
     result["="] = kEqualKey;
+    result["+"] = kPlusKey;
+    result["-"] = kMinusKey;
+    result["*"] = kMultiplyKey;
+    result["/"] = kDivideKey;
+    result["^"] = kPowerKey;
 
     return result;
 }

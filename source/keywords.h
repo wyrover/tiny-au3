@@ -11,7 +11,12 @@ enum KeywordCode
 {
     kUndefinedKey = 0,
     kLocalKey,
-    kEqualKey
+    kEqualKey,
+    kPlusKey,
+    kMinusKey,
+    kMultiplyKey,
+    kDivideKey,
+    kPowerKey
 };
 
 class Keywords

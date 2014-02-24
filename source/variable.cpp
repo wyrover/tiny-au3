@@ -8,10 +8,10 @@ using namespace tiny_au3;
 
 void Variable::SetValue(const std::string& value)
 {
-    value_ = value;
+    str_value_ = value;
 }
 
 string Variable::GetValue() const
 {
-    return value_;
+    return str_value_;
 }

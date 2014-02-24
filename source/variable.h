@@ -25,7 +25,7 @@ public:
 private:
     VariableType type_;
     std::string str_value_;
-    int int_value_
+    int int_value_;
     double double_value_;
 };
 
