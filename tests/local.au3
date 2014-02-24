@@ -1,4 +1,4 @@
-$iInt = 123
-$iDouble = -123.45
-$iString1 = "hello world from string"
-$iString2 = 'single quoted string'
+$Int = 123
+$Double = -123.45
+$String1 = "hello world from string"
+$String2 = 'single quoted string'
