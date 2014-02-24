@@ -17,3 +17,21 @@ string tiny_au3::StringToUpper(const string& str)
 
     return result;
 }
+
+string tiny_au3::EraseFirst(const string& str)
+{
+    if (str.empty())
+        return string("");
+
+    string result(str);
+    return result.erase(0, 1);
+}
+
+string tiny_au3::EraseLast(const string& str)
+{
+    if (str.empty())
+        return string("");
+
+    string result(str);
+    return result.erase(result.size() - 1);
+}

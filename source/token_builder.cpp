@@ -1,5 +1,7 @@
 #include "token_builder.h"
 
+#include "functions.h"
+
 using namespace std;
 using namespace tiny_au3;
 
@@ -43,6 +45,7 @@ bool IsNumber(const string& word)
 
 Token TokenBuilder::CreateString(const string& word)
 {
+    /* FIXME: Refactor this method */
     static bool is_string = false;
     static std::string str("");
 
@@ -51,7 +54,7 @@ Token TokenBuilder::CreateString(const string& word)
         if ( ! is_string )
         {
             is_string = true;
-            str.append(word);
+            str.append(EraseFirst(word));
             return Token(kUnfinishedToken);
         }
     }
@@ -61,7 +64,7 @@ Token TokenBuilder::CreateString(const string& word)
         if (  is_string )
         {
             is_string = false;
-            str.append(" " + word);
+            str.append(" " + EraseLast(word));
             Token result(kStringToken);
             result.SetValue(str);
             str.clear();
@@ -103,7 +106,6 @@ Token TokenBuilder::CreateVariable(const string& word)
         return Token(kUndefinedToken);
 
     Token result(kVariableToken);
-    /* FIXME: Remove the `$` symbol */
-    result.SetValue(word);
+    result.SetValue(EraseFirst(word));
     return result;
 }

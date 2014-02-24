@@ -7,6 +7,8 @@ namespace tiny_au3
 {
 
 std::string StringToUpper(const std::string& str);
+std::string EraseFirst(const std::string& str);
+std::string EraseLast(const std::string& str);
 
 }
 
