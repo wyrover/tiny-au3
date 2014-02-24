@@ -58,24 +58,18 @@ bool IsComment(const string& line)
     return (line[0] == ';');
 }
 
-Token CreateStringToken(const string& word)
-{
-    Token result(kStringToken);
-    /* FIXME: Remove the begin and end quotes */
-    result.AppendValue(word);
-    return result;
-}
-
 Token CreateToken(const string& word)
 {
     static bool is_string = false;
+    static std::string str("");
 
     if ( IsStringBegin(word) )
     {
         if ( ! is_string )
         {
             is_string = true;
-            return CreateStringToken(word);
+            str.append(word);
+            return Token(kUnfinishedToken);
         }
         else
             return Token(kUndefinedToken);
@@ -86,13 +80,19 @@ Token CreateToken(const string& word)
         if (  is_string )
         {
             is_string = false;
-            return CreateStringToken(word);
+            str.append(" " + word);
+            Token result(kStringToken);
+            result.SetValue(str);
+            return result;
         }
         else
             return Token(kUndefinedToken);
     }
     else if ( is_string )
-        return CreateStringToken(word);
+    {
+        str.append(" " + word);
+        return Token(kUnfinishedToken);
+    }
 
     if (IsNumber(word))
     {
@@ -124,10 +124,13 @@ void Lexer::ProcessWord(const string word)
 {
     Token token = CreateToken(word);
 
+    if (token.GetType() == kUnfinishedToken)
+        return;
+
     if (token.GetType() == kUndefinedToken)
         Error::Print(kTokenError, "", tokens_.size(), word);
 
-    tokens_.back().push_back(CreateToken(word));
+    tokens_.back().push_back(token);
 }
 
 void Lexer::Process(const string& line)

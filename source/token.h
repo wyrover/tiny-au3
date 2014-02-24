@@ -11,6 +11,7 @@ namespace tiny_au3
 enum TokenType
 {
     kUndefinedToken = 0,
+    kUnfinishedToken,
     kVariableToken,
     kNumberToken,
     kStringToken,
@@ -23,7 +24,6 @@ public:
     Token(const TokenType& type) : type_(type) {};
 
     void SetValue(const std::string& value);
-    void AppendValue(const std::string& value);
     void SetCode(const KeywordCode& code);
 
     TokenType GetType() const;
