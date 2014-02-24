@@ -83,6 +83,7 @@ Token CreateToken(const string& word)
             str.append(" " + word);
             Token result(kStringToken);
             result.SetValue(str);
+            str.clear();
             return result;
         }
         else
