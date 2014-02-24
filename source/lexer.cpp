@@ -9,48 +9,11 @@
 #include "types_tiny_au3.h"
 #include "debug.h"
 #include "error.h"
-#include "keywords.h"
+#include "token_builder.h"
 
 using namespace std;
 using namespace tiny_au3;
 
-
-bool IsKeyword(const string& word)
-{
-    return (Keywords::GetCode(word) != kUndefinedKey);
-}
-
-bool IsVariable(const string& word)
-{
-    return (*word.begin() == '$');
-}
-
-bool IsStringBegin(const string& word)
-{
-    char first = *word.begin();
-    return (first == '"' || first == '\'');
-}
-
-bool IsStringEnd(const string& word)
-{
-    char last = *word.rbegin();
-    return (last == '"' || last == '\'');
-}
-
-bool IsNumber(const string& word)
-{
-    string::const_iterator it = word.begin();
-
-    while (it != word.end())
-    {
-         if ( ! isdigit(*it) && (*it != '.') && (*it != '-') )
-             break;
-
-         ++it;
-    }
-
-    return (it == word.end());
-}
 
 bool IsComment(const string& line)
 {
@@ -60,63 +23,25 @@ bool IsComment(const string& line)
 
 Token CreateToken(const string& word)
 {
-    static bool is_string = false;
-    static std::string str("");
+    Token result = TokenBuilder::CreateString(word);
 
-    if ( IsStringBegin(word) )
-    {
-        if ( ! is_string )
-        {
-            is_string = true;
-            str.append(word);
-            return Token(kUnfinishedToken);
-        }
-        else
-            return Token(kUndefinedToken);
-    }
-
-    if ( IsStringEnd(word) )
-    {
-        if (  is_string )
-        {
-            is_string = false;
-            str.append(" " + word);
-            Token result(kStringToken);
-            result.SetValue(str);
-            str.clear();
-            return result;
-        }
-        else
-            return Token(kUndefinedToken);
-    }
-    else if ( is_string )
-    {
-        str.append(" " + word);
-        return Token(kUnfinishedToken);
-    }
-
-    if (IsNumber(word))
-    {
-        Token result(kNumberToken);
-        /* FIXME: Process the double and long variables */
-        result.SetValue(word);
+    if (result.GetType() != kUndefinedToken)
         return result;
-    }
 
-    if (IsKeyword(word))
-    {
-        Token result(kKeywordToken);
-        result.SetCode(Keywords::GetCode(word));
-        return result;
-    }
+    result = TokenBuilder::CreateNumber(word);
 
-    if (IsVariable(word))
-    {
-        Token result(kVariableToken);
-        /* FIXME: Remove the `$` symbol */
-        result.SetValue(word);
+    if (result.GetType() != kUndefinedToken)
         return result;
-    }
+
+    result = TokenBuilder::CreateKeyword(word);
+
+    if (result.GetType() != kUndefinedToken)
+        return result;
+
+    result = TokenBuilder::CreateVariable(word);
+
+    if (result.GetType() != kUndefinedToken)
+        return result;
 
     return Token(kUndefinedToken);
 }

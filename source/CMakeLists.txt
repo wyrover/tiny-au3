@@ -11,6 +11,7 @@ set(tiny_au3_SRCS
     program_options.cpp
     script.cpp
     token.cpp
+    token_builder.cpp
     tiny_au3.cpp
     variable.cpp
     variable_table.cpp)
