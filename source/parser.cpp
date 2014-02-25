@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include "types_tiny_au3.h"
+#include "expression.h"
 #include "debug.h"
 #include "error.h"
 
@@ -10,7 +11,7 @@ using namespace std;
 using namespace tiny_au3;
 
 
-bool IsVariableOperation(const Lexer::TokenArray& token_array)
+bool IsVariableExpression(const Lexer::TokenArray& token_array)
 {
     /* FIXME: Process the Local, Global, Const and Static keywords */
     if ( token_array[0].GetType() == kVariableToken )
@@ -19,11 +20,11 @@ bool IsVariableOperation(const Lexer::TokenArray& token_array)
     return false;
 }
 
-BINARY_FUNCTOR(ProcessVariableImpl, Token, token, VariableOperation&, operation)
+BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Expression&, expression)
     /* FIXME: Process the Local, Global, Const and Static keywords */
     if ( token.GetType() == kVariableToken )
     {
-        operation.var_name_ = token.GetValue();
+        expression.var_name_ = token.GetValue();
         return;
     }
 
@@ -32,7 +33,7 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, VariableOperation&, operation)
         /* FIXME: Implement double variable processing */
         Variable variable(kIntVariable);
         variable.SetValue(token.GetValue());
-        operation.variable_ = variable;
+        expression.variable_ = variable;
         return;
     }
 
@@ -40,13 +41,13 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, VariableOperation&, operation)
     {
         Variable variable(kStringVariabie);
         variable.SetValue(token.GetValue());
-        operation.variable_ = variable;
+        expression.variable_ = variable;
         return;
     }
 
     if ( token.GetType() == kKeywordToken )
     {
-        operation.code_ = token.GetCode();
+        expression.code_ = token.GetCode();
         return;
     }
 
@@ -55,28 +56,28 @@ END_BINARY_FUNCTOR
 
 void Parser::ProcessVariable(const Lexer::TokenArray& token_array)
 {
-    VariableOperation operation;
+    Expression expression;
 
     for_each(token_array.begin(), token_array.end(),
-             bind2nd(ProcessVariableImpl(), operation));
+             bind2nd(ProcessVariableImpl(), expression));
 
-    Execute(operation);
+    Execute(expression);
 }
 
-void Parser::Execute(const VariableOperation& operation)
+void Parser::Execute(const Expression& expression)
 {
-    if ( operation.code_ == kEqualKey )
+    if ( expression.code_ == kEqualKey )
     {
-        var_table_.SetVariable(operation.var_name_, operation.variable_);
+        var_table_.SetVariable(expression.var_name_, expression.variable_);
         return;
     }
 
-    Error::Print(kKeywordError, "", 0, operation.code_);
+    Error::Print(kKeywordError, "", 0, expression.code_);
 }
 
 void Parser::ProcessToken(const Lexer::TokenArray token_array)
 {
-    if ( IsVariableOperation(token_array) )
+    if ( IsVariableExpression(token_array) )
         ProcessVariable(token_array);
 }
 

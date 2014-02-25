@@ -3,17 +3,10 @@
 
 #include "lexer.h"
 #include "variable_table.h"
-#include "keywords.h"
+#include "expression.h"
 
 namespace tiny_au3
 {
-
-struct VariableOperation
-{
-    std::string var_name_;
-    Variable variable_;
-    KeywordCode code_;
-};
 
 class Parser
 {
@@ -25,7 +18,7 @@ private:
 
     void ProcessToken(const Lexer::TokenArray token_array);
     void ProcessVariable(const Lexer::TokenArray& token_array);
-    void Execute(const VariableOperation& operaton);
+    void Execute(const Expression& expression);
 };
 
 }
