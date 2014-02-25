@@ -19,11 +19,14 @@ class Variable
 public:
     Variable(const VariableType& type = kNoInitVariable) : type_(type) {};
 
+    void SetName(const std::string& name);
     void SetValue(const std::string& value);
+    std::string GetName() const;
     std::string GetValue() const;
 
 private:
     VariableType type_;
+    std::string name_;
     std::string str_value_;
     int int_value_;
     double double_value_;

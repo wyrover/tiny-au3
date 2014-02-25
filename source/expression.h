@@ -4,16 +4,28 @@
 #include <string>
 
 #include "variable.h"
+#include "variable_table.h"
 #include "keywords.h"
 
 namespace tiny_au3
 {
 
-struct Expression
+class Expression
 {
-    std::string var_name_;
-    Variable variable_;
-    KeywordCode code_;
+public:
+    Expression(const VariableTable& variables) : variables_(variables) {};
+
+    void SetLeft(const Variable& left);
+    void SetRight(const Variable& right);
+    void SetOperator(const KeywordCode& code);
+    void Reduce();
+
+private:
+    VariableTable variables_;
+    Variable left_;
+    Variable right_;
+    Variable result_;
+    KeywordCode operator_;
 };
 
 }

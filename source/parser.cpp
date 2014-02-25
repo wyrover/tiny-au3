@@ -24,7 +24,9 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Expression&, expression)
     /* FIXME: Process the Local, Global, Const and Static keywords */
     if ( token.GetType() == kVariableToken )
     {
-        expression.var_name_ = token.GetValue();
+        Variable variable;
+        variable.SetName(token.GetValue());
+        expression.SetLeft(variable);
         return;
     }
 
@@ -33,7 +35,7 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Expression&, expression)
         /* FIXME: Implement double variable processing */
         Variable variable(kIntVariable);
         variable.SetValue(token.GetValue());
-        expression.variable_ = variable;
+        expression.SetRight(variable);
         return;
     }
 
@@ -41,13 +43,13 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Expression&, expression)
     {
         Variable variable(kStringVariabie);
         variable.SetValue(token.GetValue());
-        expression.variable_ = variable;
+        expression.SetRight(variable);
         return;
     }
 
     if ( token.GetType() == kKeywordToken )
     {
-        expression.code_ = token.GetCode();
+        expression.SetOperator(token.GetCode());
         return;
     }
 
@@ -56,23 +58,12 @@ END_BINARY_FUNCTOR
 
 void Parser::ProcessVariable(const Lexer::TokenArray& token_array)
 {
-    Expression expression;
+    Expression expression(variables_);
 
     for_each(token_array.begin(), token_array.end(),
              bind2nd(ProcessVariableImpl(), expression));
 
-    Execute(expression);
-}
-
-void Parser::Execute(const Expression& expression)
-{
-    if ( expression.code_ == kEqualKey )
-    {
-        var_table_.SetVariable(expression.var_name_, expression.variable_);
-        return;
-    }
-
-    Error::Print(kKeywordError, "", 0, expression.code_);
+    expression.Reduce();
 }
 
 void Parser::ProcessToken(const Lexer::TokenArray token_array)
