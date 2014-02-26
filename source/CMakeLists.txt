@@ -4,13 +4,13 @@ link_directories(${COMMON_LIBDIR})
 set(tiny_au3_SRCS
     debug.cpp
     error.cpp
-    expression.cpp
     functions.cpp
     keywords.cpp
     lexer.cpp
     parser.cpp
     program_options.cpp
     script.cpp
+    statement.cpp
     token.cpp
     token_builder.cpp
     tiny_au3.cpp

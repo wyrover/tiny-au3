@@ -3,7 +3,6 @@
 
 #include "lexer.h"
 #include "variable_table.h"
-#include "expression.h"
 
 namespace tiny_au3
 {

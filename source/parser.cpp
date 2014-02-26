@@ -3,7 +3,7 @@
 #include <algorithm>
 
 #include "types_tiny_au3.h"
-#include "expression.h"
+#include "statement.h"
 #include "debug.h"
 #include "error.h"
 
@@ -11,7 +11,7 @@ using namespace std;
 using namespace tiny_au3;
 
 
-bool IsVariableExpression(const Lexer::TokenArray& token_array)
+bool IsVariableStatement(const Lexer::TokenArray& token_array)
 {
     /* FIXME: Process the Local, Global, Const and Static keywords */
     if ( token_array[0].GetType() == kVariableToken )
@@ -20,13 +20,13 @@ bool IsVariableExpression(const Lexer::TokenArray& token_array)
     return false;
 }
 
-BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Expression&, expression)
+BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
     /* FIXME: Process the Local, Global, Const and Static keywords */
     if ( token.GetType() == kVariableToken )
     {
         Variable variable;
         variable.SetName(token.GetValue());
-        expression.SetLeft(variable);
+        statement.SetLeft(variable);
         return;
     }
 
@@ -35,7 +35,7 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Expression&, expression)
         /* FIXME: Implement double variable processing */
         Variable variable(kIntVariable);
         variable.SetValue(token.GetValue());
-        expression.SetRight(variable);
+        statement.SetRight(variable);
         return;
     }
 
@@ -43,13 +43,13 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Expression&, expression)
     {
         Variable variable(kStringVariabie);
         variable.SetValue(token.GetValue());
-        expression.SetRight(variable);
+        statement.SetRight(variable);
         return;
     }
 
     if ( token.GetType() == kKeywordToken )
     {
-        expression.SetOperator(token.GetCode());
+        statement.SetOperator(token.GetCode());
         return;
     }
 
@@ -58,17 +58,17 @@ END_BINARY_FUNCTOR
 
 void Parser::ProcessVariable(const Lexer::TokenArray& token_array)
 {
-    Expression expression(variables_);
+    Statement statement(variables_);
 
     for_each(token_array.begin(), token_array.end(),
-             bind2nd(ProcessVariableImpl(), expression));
+             bind2nd(ProcessVariableImpl(), statement));
 
-    expression.Reduce();
+    statement.Reduce();
 }
 
 void Parser::ProcessToken(const Lexer::TokenArray token_array)
 {
-    if ( IsVariableExpression(token_array) )
+    if ( IsVariableStatement(token_array) )
         ProcessVariable(token_array);
 }
 

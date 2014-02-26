@@ -1,5 +1,5 @@
-#ifndef EXPRESSION_H
-#define EXPRESSION_H
+#ifndef STATEMENT_H
+#define STATEMENT_H
 
 #include <string>
 
@@ -10,10 +10,10 @@
 namespace tiny_au3
 {
 
-class Expression
+class Statement
 {
 public:
-    Expression(const VariableTable& variables) : variables_(variables) {};
+    Statement(const VariableTable& variables) : variables_(variables) {};
 
     void SetLeft(const Variable& left);
     void SetRight(const Variable& right);

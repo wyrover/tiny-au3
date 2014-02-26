@@ -1,26 +1,26 @@
-#include "expression.h"
+#include "statement.h"
 
 #include "error.h"
 
 using namespace std;
 using namespace tiny_au3;
 
-void Expression::SetLeft(const Variable& left)
+void Statement::SetLeft(const Variable& left)
 {
     left_ = left;
 }
 
-void Expression::SetRight(const Variable& right)
+void Statement::SetRight(const Variable& right)
 {
     right_ = right;
 }
 
-void Expression::SetOperator(const KeywordCode& code)
+void Statement::SetOperator(const KeywordCode& code)
 {
     operator_ = code;
 }
 
-void Expression::Reduce()
+void Statement::Reduce()
 {
     if ( operator_ == kEqualKey )
     {
