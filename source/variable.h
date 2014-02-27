@@ -11,7 +11,7 @@ namespace tiny_au3
 enum VariableType
 {
     kNoInitVariable = 0,
-    kStringVariabie,
+    kStringVariable,
     kIntVariable,
     kDoubleVariable
 };
@@ -34,11 +34,9 @@ public:
 private:
     VariableType type_;
     std::string name_;
-    std::string str_value_;
-    int int_value_;
-    double double_value_;
+    Variant* variant_;
 
-    void ClearValues();
+    void InitVariant(const VariableType& type);
 };
 
 }

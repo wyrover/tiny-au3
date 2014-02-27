@@ -1,6 +1,7 @@
 #include "variable.h"
 
 #include "debug.h"
+#include "error.h"
 #include "functions.h"
 
 using namespace std;
@@ -9,12 +10,30 @@ using namespace tiny_au3;
 
 Variable::Variable(const VariableType& type) : type_(type)
 {
-    ClearValues();
+    InitVariant(type_);
+}
+
+void Variable::InitVariant(const VariableType& type)
+{
+    switch(type)
+    {
+        case kStringVariable:
+            variant_ = new StringVariant();
+            break;
+        case kIntVariable:
+            variant_ = new IntVariant();
+            break;
+        case kDoubleVariable:
+            variant_ = new DoubleVariant();
+            break;
+        default:
+            Error::Print("Variable::Variable() - undefined variable type");
+    }
 }
 
 void Variable::SetValue(const std::string& value)
 {
-    str_value_ = value;
+    variant_->SetValue(value);
 }
 
 void Variable::SetName(const std::string& name)
@@ -24,19 +43,17 @@ void Variable::SetName(const std::string& name)
 
 string Variable::GetStrValue() const
 {
-    return str_value_;
+    return variant_->GetString();
 }
 
 int Variable::GetIntValue() const
 {
-    /* FIXME: Implement conversion from string and double if needed */
-    return int_value_;
+    return variant_->GetInt();
 }
 
 double Variable::GetDoubleValue() const
 {
-    /* FIXME: Implement conversion from string and int if needed */
-    return double_value_;
+    return variant_->GetDouble();
 }
 
 string Variable::GetName() const
@@ -49,24 +66,11 @@ Variable& Variable::operator=(const Variable& rhs)
     if (this == &rhs)
         return *this;
 
-    ClearValues();
-
     type_ = rhs.type_;
+    delete variant_;
 
-    switch(type_)
-    {
-        case kStringVariabie:
-            str_value_ = rhs.GetStrValue();
-            break;
-        case kIntVariable:
-            int_value_ = rhs.GetIntValue();
-            break;
-        case kDoubleVariable:
-            double_value_ = rhs.GetDoubleValue();
-            break;
-        default:
-            break;
-    }
+    InitVariant(type_);
+    *variant_ = *rhs.variant_;
 
     return *this;
 }
@@ -75,9 +79,4 @@ Variable& Variable::operator*(const Variable& rhs)
 {
     /* FIXME: Implement this operator */
     return *this;
-}
-
-void Variable::ClearValues()
-{
-    str_value_.clear();
 }

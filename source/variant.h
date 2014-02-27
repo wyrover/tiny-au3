@@ -6,6 +6,8 @@
 namespace tiny_au3
 {
 
+/* FIXME: Implement copy constructor and operator= for the array variants */
+
 class Variant
 {
 public:

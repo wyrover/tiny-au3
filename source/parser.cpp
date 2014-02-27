@@ -41,7 +41,7 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
 
     if ( token.GetType() == kStringToken )
     {
-        Variable variable(kStringVariabie);
+        Variable variable(kStringVariable);
         variable.SetValue(token.GetValue());
         statement.AddVariable(variable);
         return;
