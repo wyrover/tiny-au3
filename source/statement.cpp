@@ -5,31 +5,28 @@
 using namespace std;
 using namespace tiny_au3;
 
-void Statement::SetLeft(const Variable& left)
+void Statement::AddVariable(const Variable& variable)
 {
-    left_ = left;
+    StatementElement element;
+    element.variable_ = variable;
+    elements_.push_back(element);
 }
 
-void Statement::SetRight(const Variable& right)
+void Statement::AddOperator(const KeywordCode& code)
 {
-    right_ = right;
-}
-
-void Statement::SetOperator(const KeywordCode& code)
-{
-    operator_ = code;
+    StatementElement element;
+    element.operator_ = code;
+    elements_.push_back(element);
 }
 
 void Statement::Reduce()
 {
-    if ( operator_ == kEqualKey )
+    for( size_t i = 0; i < elements_.size(); i++ )
     {
-        /* FIXME: Implement the variable assignment method */
-        variables_.SetVariable(left_.GetName(), right_);
-        right_.SetName(left_.GetName());
-        result_ = left_;
-        return;
+        if ( elements_[i].operator_ == kMultiplyKey )
+        {
+            /* FIXME: Implement this operator */
+            //elements_[i-1].variable_.SetValue(elements_[i-1].variable_.GetValue() * elements_[i+1].variable_.GetValue());
+        }
     }
-
-    Error::Print(kKeywordError, "", 0, operator_);
 }

@@ -1,6 +1,7 @@
 #include "functions.h"
 
 #include <algorithm>
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -34,4 +35,22 @@ string tiny_au3::EraseLast(const string& str)
 
     string result(str);
     return result.erase(result.size() - 1);
+}
+
+int tiny_au3::StringToInt(const string& str)
+{
+    /* FIXME: Check the conversion errors */
+    int result;
+    istringstream ss(str);
+    ss >> result;
+
+    return result;
+}
+
+string tiny_au3::IntToString(const int& value)
+{
+    stringstream ss;
+    ss << value;
+
+    return ss.str();
 }

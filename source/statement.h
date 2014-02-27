@@ -2,6 +2,7 @@
 #define STATEMENT_H
 
 #include <string>
+#include <deque>
 
 #include "variable.h"
 #include "variable_table.h"
@@ -10,22 +11,30 @@
 namespace tiny_au3
 {
 
+struct StatementElement
+{
+    StatementElement() : operator_(kUndefinedKey) {};
+
+    Variable variable_;
+    KeywordCode operator_;
+};
+
 class Statement
 {
 public:
+    typedef std::deque<StatementElement> ElementDeque;
+
+public:
     Statement(const VariableTable& variables) : variables_(variables) {};
 
-    void SetLeft(const Variable& left);
-    void SetRight(const Variable& right);
-    void SetOperator(const KeywordCode& code);
+    void AddVariable(const Variable& variable);
+    void AddOperator(const KeywordCode& code);
     void Reduce();
 
 private:
     VariableTable variables_;
-    Variable left_;
-    Variable right_;
+    ElementDeque elements_;
     Variable result_;
-    KeywordCode operator_;
 };
 
 }

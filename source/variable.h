@@ -17,12 +17,16 @@ enum VariableType
 class Variable
 {
 public:
-    Variable(const VariableType& type = kNoInitVariable) : type_(type) {};
+    Variable(const VariableType& type = kNoInitVariable);
 
     void SetName(const std::string& name);
     void SetValue(const std::string& value);
     std::string GetName() const;
-    std::string GetValue() const;
+    std::string GetStrValue() const;
+    int GetIntValue() const;
+    double GetDoubleValue() const;
+
+    Variable& operator=(const Variable& rhs);
 
 private:
     VariableType type_;
@@ -30,6 +34,8 @@ private:
     std::string str_value_;
     int int_value_;
     double double_value_;
+
+    void ClearValues();
 };
 
 }
