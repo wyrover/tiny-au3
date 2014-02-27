@@ -7,9 +7,13 @@ namespace tiny_au3
 {
 
 std::string StringToUpper(const std::string& str);
-int StringToInt(const std::string& str);
-std::string IntToString(const int& value);
-std::string DoubleToString(const double& value);
+
+template<typename T>
+T StringToNumber(const std::string& number);
+
+template<typename T>
+std::string NumberToString(const T& number);
+
 std::string EraseFirst(const std::string& str);
 std::string EraseLast(const std::string& str);
 

@@ -40,3 +40,10 @@ void Error::Print(const ErrorCode& code, const std::string& filename,
     Print(code, filename, line_number, INT_TO_STR(keyword));
 }
 
+
+void Error::Print(const string& message)
+{
+    cerr << message << endl;
+
+    exit(1);
+}

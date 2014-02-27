@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "variant.h"
+
 namespace tiny_au3
 {
 

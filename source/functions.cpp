@@ -4,8 +4,16 @@
 #include <sstream>
 #include <string>
 
+#include "error.h"
+
 using namespace std;
 using namespace tiny_au3;
+
+
+template int tiny_au3::StringToNumber<int>(const string& number);
+template double tiny_au3::StringToNumber<double>(const string& number);
+template string tiny_au3::NumberToString<int>(const int& number);
+template string tiny_au3::NumberToString<double>(const double& number);
 
 
 string tiny_au3::StringToUpper(const string& str)
@@ -37,28 +45,26 @@ string tiny_au3::EraseLast(const string& str)
     return result.erase(result.size() - 1);
 }
 
-int tiny_au3::StringToInt(const string& str)
+template<typename T>
+T tiny_au3::StringToNumber(const string& number)
 {
-    /* FIXME: Check the conversion errors */
-    int result;
-    istringstream stream(str);
-    stream >> result;
+    T result;
 
+    stringstream stream(number);
+    stream >> result;
+    if (stream.fail()) {
+        Error::Print("Invalid string to number conversion");
+    }
     return result;
 }
 
-string tiny_au3::IntToString(const int& value)
+template<typename T>
+string tiny_au3::NumberToString(const T& number)
 {
     stringstream stream;
-    stream << value;
-
-    return stream.str();
-}
-
-string tiny_au3::DoubleToString(const double& value)
-{
-    ostringstream stream;
-    stream << value;
-
+    stream << number;
+    if (stream.fail()) {
+        Error::Print("Invalid number to string conversion");
+    }
     return stream.str();
 }

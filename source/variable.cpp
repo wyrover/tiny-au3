@@ -24,15 +24,6 @@ void Variable::SetName(const std::string& name)
 
 string Variable::GetStrValue() const
 {
-    switch(type_)
-    {
-        case kIntVariable:
-            return IntToString(int_value_);
-        case kDoubleVariable:
-            return DoubleToString(double_value_);
-        default:
-            break;
-    }
     return str_value_;
 }
 
