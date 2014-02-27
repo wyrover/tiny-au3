@@ -27,8 +27,9 @@ string Variable::GetStrValue() const
     switch(type_)
     {
         case kIntVariable:
-            IntToString(int_value_);
-            break;
+            return IntToString(int_value_);
+        case kDoubleVariable:
+            return DoubleToString(double_value_);
         default:
             break;
     }
@@ -76,6 +77,12 @@ Variable& Variable::operator=(const Variable& rhs)
             break;
     }
 
+    return *this;
+}
+
+Variable& Variable::operator*(const Variable& rhs)
+{
+    /* FIXME: Implement this operator */
     return *this;
 }
 

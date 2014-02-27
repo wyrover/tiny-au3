@@ -41,16 +41,24 @@ int tiny_au3::StringToInt(const string& str)
 {
     /* FIXME: Check the conversion errors */
     int result;
-    istringstream ss(str);
-    ss >> result;
+    istringstream stream(str);
+    stream >> result;
 
     return result;
 }
 
 string tiny_au3::IntToString(const int& value)
 {
-    stringstream ss;
-    ss << value;
+    stringstream stream;
+    stream << value;
 
-    return ss.str();
+    return stream.str();
+}
+
+string tiny_au3::DoubleToString(const double& value)
+{
+    ostringstream stream;
+    stream << value;
+
+    return stream.str();
 }

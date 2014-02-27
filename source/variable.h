@@ -27,6 +27,7 @@ public:
     double GetDoubleValue() const;
 
     Variable& operator=(const Variable& rhs);
+    Variable& operator*(const Variable& rhs);
 
 private:
     VariableType type_;

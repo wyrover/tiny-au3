@@ -26,7 +26,8 @@ void Statement::Reduce()
         if ( elements_[i].operator_ == kMultiplyKey )
         {
             /* FIXME: Implement this operator */
-            //elements_[i-1].variable_.SetValue(elements_[i-1].variable_.GetValue() * elements_[i+1].variable_.GetValue());
+            elements_[i-1].variable_ = elements_[i-1].variable_ * elements_[i+1].variable_;
+            /* FIXME: Delete extra elements at i and i+1 indexes */
         }
     }
 }
