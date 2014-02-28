@@ -77,6 +77,22 @@ Variable& Variable::operator=(const Variable& rhs)
 
 Variable& Variable::operator*(const Variable& rhs)
 {
-    /* FIXME: Implement this operator */
+    double result;
+
+    if ( type_ == kDoubleVariable || rhs.type_ == kDoubleVariable )
+    {
+        result = variant_->GetDouble() * rhs.variant_->GetDouble();
+
+        if ( type_ != kDoubleVariable )
+        {
+            type_ = rhs.type_;
+            delete variant_;
+            InitVariant(type_);
+        }
+
+        Debug::Print("new value = %f\n", result);
+        variant_->SetValue(NumberToString<double>(result));
+    }
+
     return *this;
 }

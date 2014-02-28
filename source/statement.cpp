@@ -1,6 +1,7 @@
 #include "statement.h"
 
 #include "error.h"
+#include "debug.h"
 
 using namespace std;
 using namespace tiny_au3;
