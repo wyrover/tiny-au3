@@ -19,7 +19,8 @@ enum VariableType
 class Variable
 {
 public:
-    Variable(const VariableType& type = kNoInitVariable);
+    explicit Variable(const VariableType& type = kNoInitVariable);
+    explicit Variable(const Variable& rhs);
 
     void SetName(const std::string& name);
     void SetValue(const std::string& value);

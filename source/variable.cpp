@@ -15,6 +15,14 @@ Variable::Variable(const VariableType& type) : type_(type)
     InitVariant(type_);
 }
 
+Variable::Variable(const Variable& rhs)
+{
+    type_ = rhs.type_;
+
+    InitVariant(type_);
+    *variant_ = *rhs.variant_;
+}
+
 void Variable::InitVariant(const VariableType& type)
 {
     switch(type)
@@ -92,9 +100,27 @@ Variable& Variable::operator*(const Variable& rhs)
             InitVariant(type_);
         }
 
-        Debug::Print("new value = %f\n", result);
         variant_->SetValue(NumberToString<double>(result));
+        return *this;
     }
+
+    if ( type_ == kIntVariable || rhs.type_ == kIntVariable )
+    {
+        result = variant_->GetInt() * rhs.variant_->GetInt();
+
+        if ( type_ != kIntVariable )
+        {
+            type_ = rhs.type_;
+            delete variant_;
+            InitVariant(type_);
+        }
+
+        variant_->SetValue(NumberToString<int>(result));
+        return *this;
+    }
+
+
+    /* FIXME: Implement the multiplying string */
 
     return *this;
 }
