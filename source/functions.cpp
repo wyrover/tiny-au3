@@ -53,7 +53,7 @@ T tiny_au3::StringToNumber(const string& number)
     stringstream stream(number);
     stream >> result;
     if (stream.fail()) {
-        Error::Print("Invalid string to number conversion");
+        Error::Print("Invalid string `%s` to number conversion\n", number.c_str());
     }
     return result;
 }
@@ -64,7 +64,7 @@ string tiny_au3::NumberToString(const T& number)
     stringstream stream;
     stream << number;
     if (stream.fail()) {
-        Error::Print("Invalid number to string conversion");
+        Error::Print("Invalid number `%d` to string conversion", number);
     }
     return stream.str();
 }

@@ -13,6 +13,9 @@ using namespace tiny_au3;
 
 bool IsVariableStatement(const Lexer::TokenArray& token_array)
 {
+    if ( token_array.empty() )
+        return false;
+
     /* FIXME: Process the Local, Global, Const and Static keywords */
     if ( token_array[0].GetType() == kVariableToken )
         return true;

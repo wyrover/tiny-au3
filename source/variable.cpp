@@ -1,5 +1,7 @@
 #include "variable.h"
 
+#include <assert.h>
+
 #include "debug.h"
 #include "error.h"
 #include "functions.h"
@@ -17,6 +19,8 @@ void Variable::InitVariant(const VariableType& type)
 {
     switch(type)
     {
+        /* FIXME: Is this default string type correctness ? */
+        default:
         case kStringVariable:
             variant_ = new StringVariant();
             break;
@@ -26,8 +30,6 @@ void Variable::InitVariant(const VariableType& type)
         case kDoubleVariable:
             variant_ = new DoubleVariant();
             break;
-        default:
-            Error::Print("Variable::Variable() - undefined variable type");
     }
 }
 

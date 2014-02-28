@@ -29,7 +29,7 @@ public:
     static void Print(const ErrorCode& code, const std::string& filename,
                       const size_t line_number, const KeywordCode& keyword);
 
-    static void Print(const std::string& message);
+    static void Print(const char* fmt, ...);
 
 private:
     static ErrorMap error_map_;

@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <stdio.h>
+#include <stdarg.h>
 
 #include "types_tiny_au3.h"
 
@@ -41,9 +43,15 @@ void Error::Print(const ErrorCode& code, const std::string& filename,
 }
 
 
-void Error::Print(const string& message)
+void Error::Print(const char* fmt, ...)
 {
-    cerr << message << endl;
+    char buf[4096];
+    va_list arg_list;
+    va_start(arg_list, fmt);
+    vsprintf(buf, fmt, arg_list);
+
+    cerr << buf;
+    va_end(arg_list);
 
     exit(1);
 }
