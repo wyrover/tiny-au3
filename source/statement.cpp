@@ -28,6 +28,7 @@ void Statement::Reduce()
         {
             /* FIXME: Implement this operator */
             elements_[i-1].variable_ = elements_[i-1].variable_ * elements_[i+1].variable_;
+            variables_.SetVariable(elements_[i-1].variable_.GetName(), elements_[i-1].variable_);
             /* FIXME: Delete extra elements at i and i+1 indexes */
         }
     }

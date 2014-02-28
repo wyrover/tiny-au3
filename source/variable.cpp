@@ -20,7 +20,7 @@ Variable::Variable(const Variable& rhs)
     type_ = rhs.type_;
 
     InitVariant(type_);
-    *variant_ = *rhs.variant_;
+    variant_->SetValue(rhs.variant_->GetString());
 }
 
 void Variable::InitVariant(const VariableType& type)
@@ -80,7 +80,7 @@ Variable& Variable::operator=(const Variable& rhs)
     delete variant_;
 
     InitVariant(type_);
-    *variant_ = *rhs.variant_;
+    variant_->SetValue(rhs.variant_->GetString());
 
     return *this;
 }
