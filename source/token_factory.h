@@ -1,5 +1,5 @@
-#ifndef TOKEN_BUILDER_H
-#define TOKEN_BUILDER_H
+#ifndef TOKEN_FACTORY_H
+#define TOKEN_FACTORY_H
 
 #include <string>
 
@@ -9,10 +9,10 @@
 namespace tiny_au3
 {
 
-class TokenBuilder
+class TokenFactory
 {
 public:
-    TokenBuilder() : is_string_(false) {};
+    TokenFactory() : is_string_(false) {};
     Token CreateToken(const std::string& word);
 
 private:
@@ -23,7 +23,7 @@ private:
     Token CreateKeyword(const std::string& word);
     Token CreateVariable(const std::string& word);
 
-    DISALLOW_COPY_AND_ASSIGN(TokenBuilder);
+    DISALLOW_COPY_AND_ASSIGN(TokenFactory);
 };
 
 }

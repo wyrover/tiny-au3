@@ -9,7 +9,7 @@
 #include "types_tiny_au3.h"
 #include "debug.h"
 #include "error.h"
-#include "token_builder.h"
+#include "token_factory.h"
 
 using namespace std;
 using namespace tiny_au3;
@@ -17,15 +17,15 @@ using namespace tiny_au3;
 
 bool IsComment(const string& line)
 {
-    /* FIXME: Comment must be placed in any position */
+    /* FIXME: Comment can be placed in any position */
     return (line[0] == ';');
 }
 
 Token CreateToken(const string& word)
 {
-    static TokenBuilder builder;
+    static TokenFactory factory;
 
-    return builder.CreateToken(word);
+    return factory.CreateToken(word);
 }
 
 void Lexer::ProcessWord(const string word)

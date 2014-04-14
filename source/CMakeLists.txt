@@ -12,7 +12,7 @@ set(tiny_au3_SRCS
     script.cpp
     statement.cpp
     token.cpp
-    token_builder.cpp
+    token_factory.cpp
     tiny_au3.cpp
     variable.cpp
     variable_table.cpp

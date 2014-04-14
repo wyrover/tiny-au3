@@ -1,4 +1,4 @@
-#include "token_builder.h"
+#include "token_factory.h"
 
 #include "functions.h"
 
@@ -42,7 +42,7 @@ bool IsNumber(const string& word)
     return (it == word.end());
 }
 
-Token TokenBuilder::CreateToken(const string& word)
+Token TokenFactory::CreateToken(const string& word)
 {
     if ( IsStringBegin(word) || is_string_ )
         return CreateString(word);
@@ -59,7 +59,7 @@ Token TokenBuilder::CreateToken(const string& word)
     return Token(kUndefinedToken);
 }
 
-Token TokenBuilder::CreateString(const string& word)
+Token TokenFactory::CreateString(const string& word)
 {
     /* FIXME: Refactor this method */
     static std::string str("");
@@ -94,7 +94,7 @@ Token TokenBuilder::CreateString(const string& word)
     return Token(kUndefinedToken);
 }
 
-Token TokenBuilder::CreateNumber(const string& word)
+Token TokenFactory::CreateNumber(const string& word)
 {
     if ( ! IsNumber(word) )
         return Token(kUndefinedToken);
@@ -105,7 +105,7 @@ Token TokenBuilder::CreateNumber(const string& word)
     return result;
 }
 
-Token TokenBuilder::CreateKeyword(const string& word)
+Token TokenFactory::CreateKeyword(const string& word)
 {
     if ( ! IsKeyword(word) )
         return Token(kUndefinedToken);
@@ -115,7 +115,7 @@ Token TokenBuilder::CreateKeyword(const string& word)
     return result;
 }
 
-Token TokenBuilder::CreateVariable(const string& word)
+Token TokenFactory::CreateVariable(const string& word)
 {
     if ( ! IsVariable(word) )
         return Token(kUndefinedToken);
