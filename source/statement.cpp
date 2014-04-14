@@ -6,7 +6,7 @@
 using namespace std;
 using namespace tiny_au3;
 
-void Statement::AddElement(const StatementElement& element)
+void Statement::AddElement(const StatementElement* element)
 {
     /* FIXME: Implement this method */
 }

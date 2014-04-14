@@ -13,7 +13,7 @@ namespace tiny_au3
 class Statement : public StatementElement
 {
 public:
-    typedef std::deque<StatementElement> ElementDeque;
+    typedef std::deque<StatementElement*> ElementDeque;
 
 public:
     Statement(VariableTable& variables) : variables_(variables) {};
@@ -21,7 +21,7 @@ public:
     virtual void Reduce();
     virtual ~Statement() {};
 
-    void AddElement(const StatementElement& element);
+    void AddElement(const StatementElement* element);
 
 private:
     VariableTable& variables_;

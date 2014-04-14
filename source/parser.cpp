@@ -4,7 +4,7 @@
 
 #include "types_tiny_au3.h"
 #include "statement.h"
-#include "operator.h"
+#include "element_factory.h"
 #include "debug.h"
 #include "error.h"
 
@@ -27,7 +27,9 @@ bool IsVariableStatement(const Lexer::TokenArray& token_array)
 BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
     /* FIXME: Process the Local, Global, Const and Static keywords */
 
-    /* FIXME: Refactoring this method with the Element Factory abstraction */
+    StatementElement* element = ElementFactory::CreateElement(token);
+    statement.AddElement(element);
+#if 0
     if ( token.GetType() == kVariableToken )
     {
         Variable variable;
@@ -61,6 +63,7 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
     }
 
     Error::Print(kTokenError, "", 0, token.GetValue());
+#endif
 END_BINARY_FUNCTOR
 
 void Parser::ProcessVariable(const Lexer::TokenArray& token_array)
