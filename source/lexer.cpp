@@ -23,28 +23,9 @@ bool IsComment(const string& line)
 
 Token CreateToken(const string& word)
 {
-    /* FIXME: Refactoring this method with polymorphism */
-    Token result = TokenBuilder::CreateString(word);
+    static TokenBuilder builder;
 
-    if (result.GetType() != kUndefinedToken)
-        return result;
-
-    result = TokenBuilder::CreateNumber(word);
-
-    if (result.GetType() != kUndefinedToken)
-        return result;
-
-    result = TokenBuilder::CreateKeyword(word);
-
-    if (result.GetType() != kUndefinedToken)
-        return result;
-
-    result = TokenBuilder::CreateVariable(word);
-
-    if (result.GetType() != kUndefinedToken)
-        return result;
-
-    return Token(kUndefinedToken);
+    return builder.CreateToken(word);
 }
 
 void Lexer::ProcessWord(const string word)
@@ -65,7 +46,7 @@ void Lexer::Process(const string& line)
     if ( line.empty() || IsComment(line) )
         return;
 
-    Debug::Print("%s\n", line.c_str());
+    Debug::Print("Lexer::Process() - %s\n", line.c_str());
 
     StringList words;
 

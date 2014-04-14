@@ -39,21 +39,36 @@ bool IsNumber(const string& word)
 
          ++it;
     }
-
     return (it == word.end());
+}
+
+Token TokenBuilder::CreateToken(const string& word)
+{
+    if ( IsStringBegin(word) || is_string_ )
+        return CreateString(word);
+
+    if ( IsNumber(word) )
+        return CreateNumber(word);
+
+    if ( IsKeyword(word) )
+        return CreateKeyword(word);
+
+    if ( IsVariable(word) )
+        return CreateVariable(word);
+
+    return Token(kUndefinedToken);
 }
 
 Token TokenBuilder::CreateString(const string& word)
 {
     /* FIXME: Refactor this method */
-    static bool is_string = false;
     static std::string str("");
 
     if ( IsStringBegin(word) )
     {
-        if ( ! is_string )
+        if ( ! is_string_ )
         {
-            is_string = true;
+            is_string_ = true;
             str.append(EraseFirst(word));
             return Token(kUnfinishedToken);
         }
@@ -61,9 +76,9 @@ Token TokenBuilder::CreateString(const string& word)
 
     if ( IsStringEnd(word) )
     {
-        if (  is_string )
+        if (  is_string_ )
         {
-            is_string = false;
+            is_string_ = false;
             str.append(" " + EraseLast(word));
             Token result(kStringToken);
             result.SetValue(str);
@@ -71,7 +86,7 @@ Token TokenBuilder::CreateString(const string& word)
             return result;
         }
     }
-    else if ( is_string )
+    else if ( is_string_ )
     {
         str.append(" " + word);
         return Token(kUnfinishedToken);

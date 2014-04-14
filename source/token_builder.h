@@ -4,6 +4,7 @@
 #include <string>
 
 #include "token.h"
+#include "types_tiny_au3.h"
 
 namespace tiny_au3
 {
@@ -11,10 +12,18 @@ namespace tiny_au3
 class TokenBuilder
 {
 public:
-    static Token CreateString(const std::string& word);
-    static Token CreateNumber(const std::string& word);
-    static Token CreateKeyword(const std::string& word);
-    static Token CreateVariable(const std::string& word);
+    TokenBuilder() : is_string_(false) {};
+    Token CreateToken(const std::string& word);
+
+private:
+    bool is_string_;
+
+    Token CreateString(const std::string& word);
+    Token CreateNumber(const std::string& word);
+    Token CreateKeyword(const std::string& word);
+    Token CreateVariable(const std::string& word);
+
+    DISALLOW_COPY_AND_ASSIGN(TokenBuilder);
 };
 
 }
