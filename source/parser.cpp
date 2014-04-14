@@ -4,6 +4,7 @@
 
 #include "types_tiny_au3.h"
 #include "statement.h"
+#include "operator.h"
 #include "debug.h"
 #include "error.h"
 
@@ -25,6 +26,8 @@ bool IsVariableStatement(const Lexer::TokenArray& token_array)
 
 BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
     /* FIXME: Process the Local, Global, Const and Static keywords */
+
+    /* FIXME: Refactoring this method with the Element Factory abstraction */
     if ( token.GetType() == kVariableToken )
     {
         Variable variable;
@@ -52,9 +55,8 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
 
     if ( token.GetType() == kKeywordToken )
     {
-        /* FIXME: Use here an object of the Operator class
-         * inherited from StatementElement */
-        //statement.AddElement(token.GetCode());
+        Operator oper(token.GetCode());
+        statement.AddElement(oper);
         return;
     }
 
