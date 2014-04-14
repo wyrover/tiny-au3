@@ -4,37 +4,28 @@
 #include <string>
 #include <deque>
 
-#include "variable.h"
+#include "statement_element.h"
 #include "variable_table.h"
-#include "keywords.h"
 
 namespace tiny_au3
 {
 
-struct StatementElement
-{
-    StatementElement() : operator_(kUndefinedKey) {};
-
-    Variable variable_;
-    KeywordCode operator_;
-};
-
-class Statement
+class Statement : public StatementElement
 {
 public:
     typedef std::deque<StatementElement> ElementDeque;
 
 public:
-    Statement(const VariableTable& variables) : variables_(variables) {};
+    Statement(VariableTable& variables) : variables_(variables) {};
 
-    void AddVariable(const Variable& variable);
-    void AddOperator(const KeywordCode& code);
-    void Reduce();
+    virtual void Reduce();
+    virtual ~Statement() {};
+
+    void AddElement(const StatementElement& element);
 
 private:
-    VariableTable variables_;
+    VariableTable& variables_;
     ElementDeque elements_;
-    Variable result_;
 };
 
 }

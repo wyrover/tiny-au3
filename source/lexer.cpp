@@ -23,6 +23,7 @@ bool IsComment(const string& line)
 
 Token CreateToken(const string& word)
 {
+    /* FIXME: Refactoring this method with polymorphism */
     Token result = TokenBuilder::CreateString(word);
 
     if (result.GetType() != kUndefinedToken)

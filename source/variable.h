@@ -4,6 +4,7 @@
 #include <string>
 
 #include "variant.h"
+#include "statement_element.h"
 
 namespace tiny_au3
 {
@@ -16,11 +17,14 @@ enum VariableType
     kDoubleVariable
 };
 
-class Variable
+class Variable : public StatementElement
 {
 public:
     explicit Variable(const VariableType& type = kNoInitVariable);
     explicit Variable(const Variable& rhs);
+
+    virtual ~Variable() {};
+    virtual void Reduce() {};
 
     void SetName(const std::string& name);
     void SetValue(const std::string& value);

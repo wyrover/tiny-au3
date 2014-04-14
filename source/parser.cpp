@@ -29,7 +29,7 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
     {
         Variable variable;
         variable.SetName(token.GetValue());
-        statement.AddVariable(variable);
+        statement.AddElement(variable);
         return;
     }
 
@@ -38,7 +38,7 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
         /* FIXME: Implement double variable processing */
         Variable variable(kIntVariable);
         variable.SetValue(token.GetValue());
-        statement.AddVariable(variable);
+        statement.AddElement(variable);
         return;
     }
 
@@ -46,13 +46,15 @@ BINARY_FUNCTOR(ProcessVariableImpl, Token, token, Statement&, statement)
     {
         Variable variable(kStringVariable);
         variable.SetValue(token.GetValue());
-        statement.AddVariable(variable);
+        statement.AddElement(variable);
         return;
     }
 
     if ( token.GetType() == kKeywordToken )
     {
-        statement.AddOperator(token.GetCode());
+        /* FIXME: Use here an object of the Operator class
+         * inherited from StatementElement */
+        //statement.AddElement(token.GetCode());
         return;
     }
 

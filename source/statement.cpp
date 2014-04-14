@@ -6,30 +6,12 @@
 using namespace std;
 using namespace tiny_au3;
 
-void Statement::AddVariable(const Variable& variable)
+void Statement::AddElement(const StatementElement& element)
 {
-    StatementElement element;
-    element.variable_ = variable;
-    elements_.push_back(element);
-}
-
-void Statement::AddOperator(const KeywordCode& code)
-{
-    StatementElement element;
-    element.operator_ = code;
-    elements_.push_back(element);
+    /* FIXME: Implement this method */
 }
 
 void Statement::Reduce()
 {
-    for( size_t i = 0; i < elements_.size(); i++ )
-    {
-        if ( elements_[i].operator_ == kMultiplyKey )
-        {
-            /* FIXME: Implement this operator */
-            elements_[i-1].variable_ = elements_[i-1].variable_ * elements_[i+1].variable_;
-            variables_.SetVariable(elements_[i-1].variable_.GetName(), elements_[i-1].variable_);
-            /* FIXME: Delete extra elements at i and i+1 indexes */
-        }
-    }
+    /* FIXME: Implement this method */
 }
