@@ -11,8 +11,8 @@ class Token
 public:
     virtual ~Token() {};
 
-    virtual StatementElement* Produce() = 0;
-    virtual bool IsComplete() = 0;
+    virtual StatementElement* Produce() const = 0;
+    virtual bool IsComplete() const = 0;
 };
 
 }

@@ -1,13 +1,16 @@
 #include "token_factory.h"
 
+#include "token_null.h"
+#include "token_variable.h"
 #include "functions.h"
 #include "keywords.h"
+#include "error.h"
 
 using namespace std;
 using namespace tiny_au3;
 
 
-bool IsKeyword(const string& word)
+bool IsOperator(const string& word)
 {
     return (Keywords::GetCode(word) != kUndefinedKey);
 }
@@ -45,30 +48,25 @@ bool IsNumber(const string& word)
 
 Token* TokenFactory::CreateToken(const string& word)
 {
-    /* FIXME: Implement this method */
-    return NULL;
-#if 0
     if ( IsStringBegin(word) || is_string_ )
         return CreateString(word);
 
     if ( IsNumber(word) )
         return CreateNumber(word);
 
-    if ( IsKeyword(word) )
-        return CreateKeyword(word);
+    if ( IsOperator(word) )
+        return CreateOperator(word);
 
     if ( IsVariable(word) )
-        return CreateVariable(word);
+        return CreateOperator(word);
 
-    return new Token(kUndefinedToken);
-#endif
+    Error::Print(kTokenError, "", 0, word);
+
+    return new TokenNull();
 }
 
 Token* TokenFactory::CreateString(const string& word)
 {
-    /* FIXME: Implement this method */
-    return NULL;
-#if 0
     /* FIXME: Refactor this method */
     static std::string str("");
 
@@ -78,7 +76,7 @@ Token* TokenFactory::CreateString(const string& word)
         {
             is_string_ = true;
             str.append(EraseFirst(word));
-            return Token(kUnfinishedToken);
+            return new TokenNull();
         }
     }
 
@@ -88,8 +86,8 @@ Token* TokenFactory::CreateString(const string& word)
         {
             is_string_ = false;
             str.append(" " + EraseLast(word));
-            Token result(kStringToken);
-            result.SetValue(str);
+            TokenVariable* result = new TokenVariable();
+            result->SetValue(str);
             str.clear();
             return result;
         }
@@ -97,10 +95,10 @@ Token* TokenFactory::CreateString(const string& word)
     else if ( is_string_ )
     {
         str.append(" " + word);
-        return Token(kUnfinishedToken);
+        return new TokenNull();
     }
-    return Token(kUndefinedToken);
-#endif
+    Error::Print(kTokenError, "", 0, word);
+    return new TokenNull();
 }
 
 Token* TokenFactory::CreateNumber(const string& word)
@@ -118,7 +116,7 @@ Token* TokenFactory::CreateNumber(const string& word)
 #endif
 }
 
-Token* TokenFactory::CreateKeyword(const string& word)
+Token* TokenFactory::CreateOperator(const string& word)
 {
     /* FIXME: Implement this method */
     return NULL;

@@ -8,7 +8,7 @@
 namespace tiny_au3
 {
 
-class TokenOperator
+class TokenOperator : public Token
 {
 public:
     virtual ~TokenOperator() {};

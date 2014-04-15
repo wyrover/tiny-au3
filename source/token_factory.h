@@ -20,7 +20,7 @@ private:
 
     Token* CreateString(const std::string& word);
     Token* CreateNumber(const std::string& word);
-    Token* CreateKeyword(const std::string& word);
+    Token* CreateOperator(const std::string& word);
     Token* CreateVariable(const std::string& word);
 
     DISALLOW_COPY_AND_ASSIGN(TokenFactory);
