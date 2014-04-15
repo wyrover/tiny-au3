@@ -13,7 +13,7 @@ namespace tiny_au3
 class Lexer
 {
 public:
-    typedef std::vector<Token> TokenArray;
+    typedef std::vector<Token*> TokenArray;
     typedef std::vector<TokenArray> TokenContainer;
     typedef std::list<std::string> StringList;
 

@@ -21,7 +21,7 @@ bool IsComment(const string& line)
     return (line[0] == ';');
 }
 
-Token CreateToken(const string& word)
+Token* CreateToken(const string& word)
 {
     static TokenFactory factory;
 
@@ -30,13 +30,10 @@ Token CreateToken(const string& word)
 
 void Lexer::ProcessWord(const string word)
 {
-    Token token = CreateToken(word);
+    Token* token = CreateToken(word);
 
-    if (token.GetType() == kUnfinishedToken)
+    if ( ! token->IsComplete() )
         return;
-
-    if (token.GetType() == kUndefinedToken)
-        Error::Print(kTokenError, "", tokens_.size(), word);
 
     tokens_.back().push_back(token);
 }

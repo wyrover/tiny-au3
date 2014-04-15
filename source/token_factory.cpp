@@ -1,6 +1,7 @@
 #include "token_factory.h"
 
 #include "functions.h"
+#include "keywords.h"
 
 using namespace std;
 using namespace tiny_au3;
@@ -42,8 +43,11 @@ bool IsNumber(const string& word)
     return (it == word.end());
 }
 
-Token TokenFactory::CreateToken(const string& word)
+Token* TokenFactory::CreateToken(const string& word)
 {
+    /* FIXME: Implement this method */
+    return NULL;
+#if 0
     if ( IsStringBegin(word) || is_string_ )
         return CreateString(word);
 
@@ -56,11 +60,15 @@ Token TokenFactory::CreateToken(const string& word)
     if ( IsVariable(word) )
         return CreateVariable(word);
 
-    return Token(kUndefinedToken);
+    return new Token(kUndefinedToken);
+#endif
 }
 
-Token TokenFactory::CreateString(const string& word)
+Token* TokenFactory::CreateString(const string& word)
 {
+    /* FIXME: Implement this method */
+    return NULL;
+#if 0
     /* FIXME: Refactor this method */
     static std::string str("");
 
@@ -92,10 +100,14 @@ Token TokenFactory::CreateString(const string& word)
         return Token(kUnfinishedToken);
     }
     return Token(kUndefinedToken);
+#endif
 }
 
-Token TokenFactory::CreateNumber(const string& word)
+Token* TokenFactory::CreateNumber(const string& word)
 {
+    /* FIXME: Implement this method */
+    return NULL;
+#if 0
     if ( ! IsNumber(word) )
         return Token(kUndefinedToken);
 
@@ -103,24 +115,33 @@ Token TokenFactory::CreateNumber(const string& word)
     /* FIXME: Process the double and long variables */
     result.SetValue(word);
     return result;
+#endif
 }
 
-Token TokenFactory::CreateKeyword(const string& word)
+Token* TokenFactory::CreateKeyword(const string& word)
 {
+    /* FIXME: Implement this method */
+    return NULL;
+#if 0
     if ( ! IsKeyword(word) )
         return Token(kUndefinedToken);
 
     Token result(kKeywordToken);
     result.SetCode(Keywords::GetCode(word));
     return result;
+#endif
 }
 
-Token TokenFactory::CreateVariable(const string& word)
+Token* TokenFactory::CreateVariable(const string& word)
 {
+    /* FIXME: Implement this method */
+    return NULL;
+#if 0
     if ( ! IsVariable(word) )
         return Token(kUndefinedToken);
 
     Token result(kVariableToken);
     result.SetValue(EraseFirst(word));
     return result;
+#endif
 }

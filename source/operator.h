@@ -2,6 +2,7 @@
 #define OPERATOR_H
 
 #include "statement_element.h"
+#include "keywords.h"
 
 namespace tiny_au3
 {
