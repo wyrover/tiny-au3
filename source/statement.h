@@ -16,8 +16,10 @@ public:
     typedef std::deque<StatementElement*> ElementDeque;
 
 public:
-    virtual void Reduce();
     virtual ~Statement() {};
+
+    virtual void Reduce();
+    virtual void Init(const std::string& value) {};
 
     void AddElement(const StatementElement* element);
 

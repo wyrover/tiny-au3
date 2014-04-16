@@ -37,7 +37,9 @@ void VariableTable::SetVariable(const string& name, Variable* variable)
 {
     string upper_name = StringToUpper(name);
 
+    /* FIXME: Allow this debug output
     Debug::Print("VariableTable::SetVariable() - var_name = %s var_value = %s\n",
                  upper_name.c_str(), variable->GetStrValue().c_str());
+    */
     variables_[upper_name] = variable;
 }

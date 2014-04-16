@@ -9,6 +9,7 @@ struct StatementElement
     virtual ~StatementElement() {};
 
     virtual void Reduce() = 0;
+    virtual void Init(const std::string& value) = 0;
 };
 
 }
