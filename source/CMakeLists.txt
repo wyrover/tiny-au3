@@ -14,6 +14,7 @@ set(tiny_au3_SRCS
     statement.cpp
     token_factory.cpp
     token_literal.cpp
+    token_operator.cpp
     token_variable.cpp
     tiny_au3.cpp
     variable.cpp

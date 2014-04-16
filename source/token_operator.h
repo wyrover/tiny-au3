@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "keywords.h"
+#include "token.h"
 
 namespace tiny_au3
 {
@@ -16,6 +16,9 @@ public:
     virtual StatementElement* Produce() const;
     virtual bool IsComplete() const;
     virtual void SetValue(const std::string& value);
+
+private:
+    std::string value_;
 };
 
 }

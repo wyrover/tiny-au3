@@ -3,6 +3,7 @@
 #include "token_null.h"
 #include "token_variable.h"
 #include "token_literal.h"
+#include "token_operator.h"
 #include "functions.h"
 #include "keywords.h"
 #include "error.h"
@@ -111,16 +112,9 @@ Token* TokenFactory::CreateNumber(const string& word)
 
 Token* TokenFactory::CreateOperator(const string& word)
 {
-    /* FIXME: Implement this method */
-    return NULL;
-#if 0
-    if ( ! IsKeyword(word) )
-        return Token(kUndefinedToken);
-
-    Token result(kKeywordToken);
-    result.SetCode(Keywords::GetCode(word));
+    Token* result = new TokenOperator();
+    result->SetValue(word);
     return result;
-#endif
 }
 
 Token* TokenFactory::CreateVariable(const string& word)
