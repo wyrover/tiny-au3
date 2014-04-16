@@ -23,6 +23,8 @@ public:
     {
         return false;
     }
+
+    virtual void SetValue(const std::string& value) {};
 };
 
 }

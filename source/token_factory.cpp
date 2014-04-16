@@ -2,6 +2,7 @@
 
 #include "token_null.h"
 #include "token_variable.h"
+#include "token_literal.h"
 #include "functions.h"
 #include "keywords.h"
 #include "error.h"
@@ -86,7 +87,7 @@ Token* TokenFactory::CreateString(const string& word)
         {
             is_string_ = false;
             str.append(" " + EraseLast(word));
-            TokenVariable* result = new TokenVariable();
+            Token* result = new TokenLiteral();
             result->SetValue(str);
             str.clear();
             return result;
@@ -103,17 +104,9 @@ Token* TokenFactory::CreateString(const string& word)
 
 Token* TokenFactory::CreateNumber(const string& word)
 {
-    /* FIXME: Implement this method */
-    return NULL;
-#if 0
-    if ( ! IsNumber(word) )
-        return Token(kUndefinedToken);
-
-    Token result(kNumberToken);
-    /* FIXME: Process the double and long variables */
-    result.SetValue(word);
+    Token* result = new TokenLiteral();
+    result->SetValue(word);
     return result;
-#endif
 }
 
 Token* TokenFactory::CreateOperator(const string& word)
@@ -132,14 +125,7 @@ Token* TokenFactory::CreateOperator(const string& word)
 
 Token* TokenFactory::CreateVariable(const string& word)
 {
-    /* FIXME: Implement this method */
-    return NULL;
-#if 0
-    if ( ! IsVariable(word) )
-        return Token(kUndefinedToken);
-
-    Token result(kVariableToken);
-    result.SetValue(EraseFirst(word));
+    Token* result = new TokenVariable();
+    result->SetValue(EraseFirst(word));
     return result;
-#endif
 }

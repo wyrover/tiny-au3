@@ -13,7 +13,9 @@ class TokenOperator : public Token
 public:
     virtual ~TokenOperator() {};
 
-    virtual StatementElement* Produce() {};
+    virtual StatementElement* Produce() const;
+    virtual bool IsComplete() const;
+    virtual void SetValue(const std::string& value);
 };
 
 }

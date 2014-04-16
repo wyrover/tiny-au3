@@ -1,5 +1,5 @@
-#ifndef TOKEN_VARIABLE_H
-#define TOKEN_VARIABLE_H
+#ifndef TOKEN_LITERAL_H
+#define TOKEN_LITERAL_H
 
 #include <string>
 
@@ -10,10 +10,10 @@ namespace tiny_au3
 
 class StatementElement;
 
-class TokenVariable : public Token
+class TokenLiteral : public Token
 {
 public:
-    virtual ~TokenVariable() {};
+    virtual ~TokenLiteral() {};
 
     virtual StatementElement* Produce() const;
     virtual bool IsComplete() const;
