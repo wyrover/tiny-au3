@@ -12,13 +12,20 @@ namespace tiny_au3
 class VariableTable
 {
 public:
-    typedef std::map<std::string, Variable> VariableMap;
+    typedef std::map<std::string, Variable*> VariableMap;
 
 public:
-    void SetVariable(const std::string& name, const Variable& variable);
+    static VariableTable* Instance();
+
+    ~VariableTable();
+
+    void SetVariable(const std::string& name, Variable* variable);
 
 private:
+    static VariableTable* instance_;
     VariableMap variables_;
+
+    VariableTable() {};
 };
 
 }

@@ -16,15 +16,12 @@ public:
     typedef std::deque<StatementElement*> ElementDeque;
 
 public:
-    Statement(VariableTable& variables) : variables_(variables) {};
-
     virtual void Reduce();
     virtual ~Statement() {};
 
     void AddElement(const StatementElement* element);
 
 private:
-    VariableTable& variables_;
     ElementDeque elements_;
 };
 

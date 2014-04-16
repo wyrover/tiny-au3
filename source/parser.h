@@ -13,9 +13,6 @@ public:
     void Process(const Lexer::TokenContainer& tokens);
 
 private:
-    /* FIXME: This can be a singleton object */
-    VariableTable variables_;
-
     void ProcessToken(const Lexer::TokenArray token_array);
     void ProcessVariable(const Lexer::TokenArray& token_array);
 };
