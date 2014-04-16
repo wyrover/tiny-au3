@@ -11,10 +11,6 @@ class Parser
 {
 public:
     void Process(const Lexer::TokenContainer& tokens);
-
-private:
-    void ProcessToken(const Lexer::TokenArray token_array);
-    void ProcessVariable(const Lexer::TokenArray& token_array);
 };
 
 }
