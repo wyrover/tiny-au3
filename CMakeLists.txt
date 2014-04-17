@@ -8,10 +8,12 @@ cmake_minimum_required(VERSION 2.6)
 project(tiny-au3)
 
 set(COMMON_INCLUDE_DIRS
-    ${PROJECT_SOURCE_DIR}/source)
+    ${PROJECT_SOURCE_DIR}/source
+    ${PROJECT_SOURCE_DIR}/source/lexer)
 
 set(COMMON_LIBDIR
-    ${PROJECT_SOURCE_DIR}/source)
+    ${PROJECT_SOURCE_DIR}/source
+    ${PROJECT_SOURCE_DIR}/source/lexer)
 
 # Build type by default is Release
 if(NOT CMAKE_BUILD_TYPE)
