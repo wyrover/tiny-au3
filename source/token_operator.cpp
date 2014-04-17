@@ -1,13 +1,18 @@
 #include "token_operator.h"
 
+#include "operator.h"
+
 using namespace std;
 using namespace tiny_au3;
 
 
 StatementElement* TokenOperator::Produce() const
 {
-    /* FIXME: Implement this method */
-    return 0;
+    StatementElement* result = new Operator();
+
+    result->Init(value_);
+
+    return result;
 }
 
 bool TokenOperator::IsComplete() const
