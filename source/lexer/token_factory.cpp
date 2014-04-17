@@ -5,7 +5,7 @@
 #include "token_literal.h"
 #include "token_operator.h"
 #include "functions.h"
-#include "keywords.h"
+#include "operator_table.h"
 #include "error.h"
 
 using namespace std;
@@ -14,7 +14,7 @@ using namespace tiny_au3;
 
 bool IsOperator(const string& word)
 {
-    return (Keywords::GetCode(word) != kUndefinedKey);
+    return (OperatorTable::GetCode(word) != kUndefinedOperator);
 }
 
 bool IsVariable(const string& word)

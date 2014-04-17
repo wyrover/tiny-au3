@@ -36,13 +36,6 @@ void Error::Print(const ErrorCode& code, const std::string& filename,
     exit(1);
 }
 
-void Error::Print(const ErrorCode& code, const std::string& filename,
-                  const size_t line_number, const KeywordCode& keyword)
-{
-    Print(code, filename, line_number, INT_TO_STR(keyword));
-}
-
-
 void Error::Print(const char* fmt, ...)
 {
     char buf[4096];

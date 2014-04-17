@@ -4,8 +4,6 @@
 #include <string>
 #include <map>
 
-#include "keywords.h"
-
 namespace tiny_au3
 {
 
@@ -25,9 +23,6 @@ public:
     static ErrorMap CreateMap();
     static void Print(const ErrorCode& code, const std::string& filename,
                       const size_t line_number, const std::string& word);
-
-    static void Print(const ErrorCode& code, const std::string& filename,
-                      const size_t line_number, const KeywordCode& keyword);
 
     static void Print(const char* fmt, ...);
 
