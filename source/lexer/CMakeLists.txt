@@ -2,6 +2,7 @@ include_directories(${COMMON_INCLUDE_DIRS})
 link_directories(${COMMON_LIBDIR})
 
 set(lexer_SRCS
+    keywords.cpp
     lexer.cpp
     token_factory.cpp
     token_literal.cpp

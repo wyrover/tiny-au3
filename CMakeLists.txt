@@ -9,11 +9,13 @@ project(tiny-au3)
 
 set(COMMON_INCLUDE_DIRS
     ${PROJECT_SOURCE_DIR}/source
-    ${PROJECT_SOURCE_DIR}/source/lexer)
+    ${PROJECT_SOURCE_DIR}/source/lexer
+    ${PROJECT_SOURCE_DIR}/source/parser)
 
 set(COMMON_LIBDIR
     ${PROJECT_SOURCE_DIR}/source
-    ${PROJECT_SOURCE_DIR}/source/lexer)
+    ${PROJECT_SOURCE_DIR}/source/lexer
+    ${PROJECT_SOURCE_DIR}/source/parser)
 
 # Build type by default is Release
 if(NOT CMAKE_BUILD_TYPE)
