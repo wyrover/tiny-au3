@@ -1,13 +1,18 @@
 #include "token_literal.h"
 
+#include "literal.h"
+
 using namespace std;
 using namespace tiny_au3;
 
 
 StatementElement* TokenLiteral::Produce() const
 {
-    /* FIXME: Implement this method */
-    return 0;
+    StatementElement* result = new Literal();
+
+    result->Init(value_);
+
+    return result;
 }
 
 bool TokenLiteral::IsComplete() const
