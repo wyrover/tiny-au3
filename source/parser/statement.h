@@ -21,7 +21,7 @@ public:
     virtual void Reduce();
     virtual void Init(const std::string& value) {};
 
-    void AddElement(const StatementElement* element);
+    void AddElement(StatementElement* element);
 
 private:
     ElementDeque elements_;
