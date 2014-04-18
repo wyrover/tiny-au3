@@ -1,5 +1,5 @@
-#ifndef OPERATOR_H
-#define OPERATOR_H
+#ifndef NULL_ELEMENT_H
+#define NULL_ELEMENT_H
 
 #include <string>
 
@@ -8,12 +8,12 @@
 namespace tiny_au3
 {
 
-class Operator : public StatementElement
+class NullElement : public StatementElement
 {
 public:
-    virtual ~Operator() {};
+    virtual ~Variable() {};
     virtual void Reduce(StatementElement* lhs, StatementElement* rhs) {};
-    virtual void Init(const std::string& value);
+    virtual void Init(const std::string& value) {};
 };
 
 }

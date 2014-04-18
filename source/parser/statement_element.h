@@ -8,7 +8,7 @@ struct StatementElement
 {
     virtual ~StatementElement() {};
 
-    virtual void Reduce() = 0;
+    virtual void Reduce(StatementElement* lhs, StatementElement* rhs) = 0;
     virtual void Init(const std::string& value) = 0;
 };
 
