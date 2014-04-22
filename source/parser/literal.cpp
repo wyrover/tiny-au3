@@ -12,5 +12,5 @@ void Literal::Init(const string& value)
 
 void Literal::Reduce(StatementElement* next)
 {
-    /* FIXME: Implement this method */
+    GetPrev()->Reduce(this);
 }

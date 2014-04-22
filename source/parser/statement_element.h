@@ -6,8 +6,10 @@
 namespace tiny_au3
 {
 
-struct StatementElement
+class StatementElement
 {
+public:
+    StatementElement() : prev_(NULL) {};
     virtual ~StatementElement() {};
 
     virtual void Reduce(StatementElement* next) = 0;
