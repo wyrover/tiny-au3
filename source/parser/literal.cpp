@@ -7,5 +7,10 @@ using namespace tiny_au3;
 
 void Literal::Init(const string& value)
 {
-    /* FIXME: Implement this method */
+    value_ = value;
+}
+
+StatementElement* Literal::Reduce(StatementElement* lhs, StatementElement* rhs)
+{
+    return NULL;
 }

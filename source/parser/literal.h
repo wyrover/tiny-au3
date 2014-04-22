@@ -12,8 +12,11 @@ class Literal : public StatementElement
 {
 public:
     virtual ~Literal() {};
-    virtual void Reduce() {};
+    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs);
     virtual void Init(const std::string& value);
+
+private:
+    std::string value_;
 };
 
 }
