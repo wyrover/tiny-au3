@@ -12,10 +12,7 @@ class Variable : public StatementElement
 {
 public:
     virtual ~Variable() {};
-    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs)
-    {
-        return NULL;
-    }
+    virtual void Reduce(StatementElement* next) {};
     virtual void Init(const std::string& value);
 };
 

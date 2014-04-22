@@ -12,10 +12,7 @@ class Operator : public StatementElement
 {
 public:
     virtual ~Operator() {};
-    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs)
-    {
-        return NULL;
-    }
+    virtual void Reduce(StatementElement* next) {};
     virtual void Init(const std::string& value);
 };
 

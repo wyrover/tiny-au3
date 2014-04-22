@@ -13,16 +13,13 @@ namespace tiny_au3
 class Statement
 {
 public:
-    typedef std::deque<StatementElement*> ElementDeque;
-
-public:
     virtual ~Statement() {};
 
     void Reduce();
     void AddElement(StatementElement* element);
 
 private:
-    ElementDeque elements_;
+    StatementElement* last_;
 };
 
 }

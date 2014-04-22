@@ -11,12 +11,16 @@ namespace tiny_au3
 class NullElement : public StatementElement
 {
 public:
+    static NullElement* Instance();
+
     virtual ~NullElement() {};
-    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs)
-    {
-        return NULL;
-    }
+    virtual void Reduce(StatementElement* next) {};
     virtual void Init(const std::string& value) {};
+
+private:
+    static NullElement* instance_;
+
+    NullElement() {};
 };
 
 }

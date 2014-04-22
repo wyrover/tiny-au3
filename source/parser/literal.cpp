@@ -10,7 +10,7 @@ void Literal::Init(const string& value)
     value_ = value;
 }
 
-StatementElement* Literal::Reduce(StatementElement* lhs, StatementElement* rhs)
+void Literal::Reduce(StatementElement* next)
 {
-    return NULL;
+    /* FIXME: Implement this method */
 }
