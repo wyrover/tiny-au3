@@ -16,8 +16,5 @@ void Statement::AddElement(StatementElement* element)
 
 void Statement::Reduce()
 {
-    if ( last_ == NULL )
-        return;
-
     last_->Reduce(NullElement::Instance());
 }

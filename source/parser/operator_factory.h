@@ -6,6 +6,8 @@
 namespace tiny_au3
 {
 
+class OperatorImpl;
+
 class OperatorFactory
 {
 public:

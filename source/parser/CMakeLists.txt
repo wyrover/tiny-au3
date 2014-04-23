@@ -5,6 +5,7 @@ set(parser_SRCS
     literal.cpp
     null_element.cpp
     operator.cpp
+    operator_factory.cpp
     parser.cpp
     statement.cpp
     statement_element.cpp
