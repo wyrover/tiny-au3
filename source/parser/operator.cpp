@@ -16,5 +16,7 @@ void Operator::Init(const string& value)
 
 void Operator::Reduce(StatementElement* next)
 {
-    /* FIXME: Implement this method */
+    impl_->Reduce(GetPrev(), next);
+
+    GetPrev()->Reduce(this);
 }
