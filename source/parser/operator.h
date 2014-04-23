@@ -5,6 +5,7 @@
 
 #include "statement_element.h"
 #include "operator_null.h"
+#include "types_tiny_au3.h"
 
 namespace tiny_au3
 {
@@ -22,6 +23,8 @@ public:
 
 private:
     OperatorImpl* impl_;
+
+    DISALLOW_COPY_AND_ASSIGN(Operator);
 };
 
 }

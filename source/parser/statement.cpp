@@ -7,7 +7,7 @@ using namespace tiny_au3;
 
 void Statement::AddElement(StatementElement* element)
 {
-    StatementElement* prev= last_;
+    StatementElement* prev = last_;
 
     last_ = element;
 
