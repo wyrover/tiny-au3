@@ -60,7 +60,7 @@ Token* TokenFactory::CreateToken(const string& word)
         return CreateOperator(word);
 
     if ( IsVariable(word) )
-        return CreateOperator(word);
+        return CreateVariable(word);
 
     Error::Print(kTokenError, "", 0, word);
 
