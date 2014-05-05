@@ -19,7 +19,7 @@ public:
 
     ~VariableTable();
 
-    void SetVariable(const std::string& name, Variable* variable);
+    void SetVariable(const std::string& name, const std::string& value);
 
 private:
     static VariableTable* instance_;

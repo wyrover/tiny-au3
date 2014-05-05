@@ -3,7 +3,6 @@
 #include <algorithm>
 
 #include "functions.h"
-#include "debug.h"
 
 using namespace std;
 using namespace tiny_au3;
@@ -33,13 +32,12 @@ VariableTable::~VariableTable()
              RemoveVariable);
 }
 
-void VariableTable::SetVariable(const string& name, Variable* variable)
+void VariableTable::SetVariable(const string& name, const std::string& value)
 {
     string upper_name = StringToUpper(name);
 
-    /* FIXME: Allow this debug output
-    Debug::Print("VariableTable::SetVariable() - var_name = %s var_value = %s\n",
-                 upper_name.c_str(), variable->GetStrValue().c_str());
-    */
-    variables_[upper_name] = variable;
+    /* FIXME: Algorithm:
+     * 1) Create new variable if needed
+     * 2) Set new value of the existed or new variable */
+    //variables_[upper_name] = variable;
 }

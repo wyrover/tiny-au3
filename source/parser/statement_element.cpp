@@ -16,3 +16,8 @@ StatementElement* StatementElement::GetPrev()
 
     return prev_;
 }
+
+string StatementElement::GetValue() const
+{
+    return string("");
+}

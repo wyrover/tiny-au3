@@ -14,6 +14,7 @@ public:
 
     virtual void Reduce(StatementElement* next) = 0;
     virtual void Init(const std::string& value) = 0;
+    virtual std::string GetValue() const;
 
     void SetPrev(StatementElement* prev);
     StatementElement* GetPrev();
