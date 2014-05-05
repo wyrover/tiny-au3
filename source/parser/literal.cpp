@@ -14,3 +14,8 @@ void Literal::Reduce(StatementElement* next)
 {
     GetPrev()->Reduce(this);
 }
+
+string Literal::GetValue() const
+{
+    return value_;
+}

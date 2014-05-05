@@ -14,6 +14,7 @@ public:
     virtual ~Literal() {};
     virtual void Reduce(StatementElement* next);
     virtual void Init(const std::string& value);
+    virtual std::string GetValue() const;
 
 private:
     std::string value_;
