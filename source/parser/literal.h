@@ -11,8 +11,7 @@ namespace tiny_au3
 class Literal : public StatementElement
 {
 public:
-    explicit Literal(const std::string& value)
-        : StatementElement(value), value_(value) {};
+    explicit Literal(const std::string& value);
 
     virtual ~Literal() {};
     virtual void Reduce(StatementElement* next);
