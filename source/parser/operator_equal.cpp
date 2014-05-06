@@ -10,8 +10,8 @@ using namespace tiny_au3;
 
 void OperatorEqual::Reduce(StatementElement* lhs, StatementElement* rhs)
 {
-    /* FIXME: Now this works for literals only.
-     * Implement Variable::Reduce() method to prepare correct
-     * Variable::GetValue() result */
-    VariableTable::Instance()->SetVariable(lhs->GetValue(), rhs->GetValue());
+    string lhs_name = lhs->GetValue();
+    string rhs_value = VariableTable::Instance()->GetValue(rhs->GetValue());
+
+    VariableTable::Instance()->SetValue(lhs_name, rhs_value);
 }

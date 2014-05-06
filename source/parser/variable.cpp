@@ -11,7 +11,7 @@ using namespace tiny_au3;
 Variable::Variable(const string& value)
     : StatementElement(value), value_(value)
 {
-    VariableTable::Instance()->SetVariable(value_, "");
+    VariableTable::Instance()->SetValue(value_, "");
 }
 
 void Variable::Reduce(StatementElement* next)
