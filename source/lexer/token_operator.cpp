@@ -10,8 +10,6 @@ StatementElement* TokenOperator::Produce() const
 {
     StatementElement* result = new Operator(value_);
 
-    result->Init(value_);
-
     return result;
 }
 

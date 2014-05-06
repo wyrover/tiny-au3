@@ -8,9 +8,7 @@ using namespace tiny_au3;
 
 StatementElement* TokenVariable::Produce() const
 {
-    StatementElement* result = new Variable();
-
-    result->Init(value_);
+    StatementElement* result = new Variable(value_);
 
     return result;
 }

@@ -8,9 +8,7 @@ using namespace tiny_au3;
 
 StatementElement* TokenLiteral::Produce() const
 {
-    StatementElement* result = new Literal();
-
-    result->Init(value_);
+    StatementElement* result = new Literal(value_);
 
     return result;
 }
