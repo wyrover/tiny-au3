@@ -11,6 +11,9 @@ namespace tiny_au3
 class Variable : public StatementElement
 {
 public:
+    explicit Variable(const std::string& value)
+        : StatementElement(value), value_(value) {};
+
     virtual ~Variable() {};
     virtual void Reduce(StatementElement* next);
     virtual void Init(const std::string& value);

@@ -7,6 +7,15 @@
 using namespace std;
 using namespace tiny_au3;
 
+
+Operator::Operator(const std::string& value)
+    : StatementElement(value)
+{
+    static OperatorFactory factory;
+
+    impl_ = factory.CreateOperator(value);
+}
+
 void Operator::Init(const string& value)
 {
     static OperatorFactory factory;

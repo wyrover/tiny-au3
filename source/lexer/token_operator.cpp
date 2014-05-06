@@ -8,7 +8,7 @@ using namespace tiny_au3;
 
 StatementElement* TokenOperator::Produce() const
 {
-    StatementElement* result = new Operator();
+    StatementElement* result = new Operator(value_);
 
     result->Init(value_);
 

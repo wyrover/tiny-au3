@@ -16,6 +16,7 @@ class Operator : public StatementElement
 {
 public:
     Operator() : impl_(OperatorNull::Instance()) {};
+    explicit Operator(const std::string& value);
 
     virtual ~Operator() {};
     virtual void Reduce(StatementElement* next);

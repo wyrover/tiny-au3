@@ -10,6 +10,7 @@ class StatementElement
 {
 public:
     StatementElement() : prev_(NULL) {};
+    explicit StatementElement(const std::string& value) : prev_(NULL) {};
     virtual ~StatementElement() {};
 
     virtual void Reduce(StatementElement* next) = 0;
