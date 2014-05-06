@@ -16,13 +16,6 @@ Operator::Operator(const std::string& value)
     impl_ = factory.CreateOperator(value);
 }
 
-void Operator::Init(const string& value)
-{
-    static OperatorFactory factory;
-
-    impl_ = factory.CreateOperator(value);
-}
-
 void Operator::Reduce(StatementElement* next)
 {
     impl_->Reduce(GetPrev(), next);

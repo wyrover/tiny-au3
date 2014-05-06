@@ -20,7 +20,6 @@ public:
 
     virtual ~Operator() {};
     virtual void Reduce(StatementElement* next);
-    virtual void Init(const std::string& value);
 
 private:
     OperatorImpl* impl_;
