@@ -13,7 +13,6 @@ set(parser_SRCS
     statement.cpp
     statement_element.cpp
     variable.cpp
-    variable_table.cpp
-    variant.cpp)
+    variable_table.cpp)
 
 add_library(parser STATIC ${parser_SRCS})
