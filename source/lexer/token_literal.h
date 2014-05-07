@@ -17,10 +17,6 @@ public:
 
     virtual StatementElement* Produce() const;
     virtual bool IsComplete() const;
-    virtual void SetValue(const std::string& value);
-
-private:
-    std::string value_;
 };
 
 }

@@ -89,7 +89,7 @@ Token* TokenFactory::CreateString(const string& word)
             is_string_ = false;
             str.append(" " + EraseLast(word));
             Token* result = new TokenLiteral();
-            result->SetValue(str);
+            result->SetId(str);
             str.clear();
             return result;
         }
@@ -106,20 +106,20 @@ Token* TokenFactory::CreateString(const string& word)
 Token* TokenFactory::CreateNumber(const string& word)
 {
     Token* result = new TokenLiteral();
-    result->SetValue(word);
+    result->SetId(word);
     return result;
 }
 
 Token* TokenFactory::CreateOperator(const string& word)
 {
     Token* result = new TokenOperator();
-    result->SetValue(word);
+    result->SetId(word);
     return result;
 }
 
 Token* TokenFactory::CreateVariable(const string& word)
 {
     Token* result = new TokenVariable();
-    result->SetValue(EraseFirst(word));
+    result->SetId(EraseFirst(word));
     return result;
 }

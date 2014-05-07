@@ -12,6 +12,8 @@ namespace tiny_au3
 class VariableTable
 {
 public:
+    /* FIXME: Use hash-table instead STL map container.
+     * Key is hashed token (first std::strign). */
     typedef std::map<std::string, std::string> VariableMap;
 
 public:

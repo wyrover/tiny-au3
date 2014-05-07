@@ -15,7 +15,10 @@ public:
 
     virtual StatementElement* Produce() const = 0;
     virtual bool IsComplete() const = 0;
-    virtual void SetValue(const std::string& value) = 0;
+    virtual void SetId(const std::string& id);
+
+protected:
+    std::string id_;
 };
 
 }

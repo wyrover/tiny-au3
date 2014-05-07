@@ -4,6 +4,7 @@ link_directories(${COMMON_LIBDIR})
 set(lexer_SRCS
     lexer.cpp
     operator_table.cpp
+    token.cpp
     token_factory.cpp
     token_literal.cpp
     token_operator.cpp
