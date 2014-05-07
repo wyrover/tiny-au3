@@ -15,12 +15,11 @@ public:
 
     virtual ~NullElement() {};
     virtual void Reduce(StatementElement* next) {};
-    virtual void Init(const std::string& value) {};
 
 private:
     static NullElement* instance_;
 
-    NullElement() {};
+    NullElement() : StatementElement("") {};
 };
 
 }

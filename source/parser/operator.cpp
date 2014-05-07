@@ -8,12 +8,12 @@ using namespace std;
 using namespace tiny_au3;
 
 
-Operator::Operator(const std::string& value)
-    : StatementElement(value)
+Operator::Operator(const std::string& id)
+    : StatementElement(id)
 {
     static OperatorFactory factory;
 
-    impl_ = factory.CreateOperator(value);
+    impl_ = factory.CreateOperator(id);
 }
 
 void Operator::Reduce(StatementElement* next)

@@ -9,12 +9,11 @@ namespace tiny_au3
 class StatementElement
 {
 public:
-    StatementElement() : prev_(NULL) {};
-    explicit StatementElement(const std::string& value) : prev_(NULL) {};
+    explicit StatementElement(const std::string& id) : prev_(NULL) {};
     virtual ~StatementElement() {};
 
     virtual void Reduce(StatementElement* next) = 0;
-    virtual std::string GetValue() const;
+    virtual std::string GetId() const;
 
     void SetPrev(StatementElement* prev);
     StatementElement* GetPrev();

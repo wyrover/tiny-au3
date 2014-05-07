@@ -8,10 +8,10 @@ using namespace std;
 using namespace tiny_au3;
 
 
-Literal::Literal(const string& value)
-    : StatementElement(value), value_(value)
+Literal::Literal(const string& id)
+    : StatementElement(id), id_(id)
 {
-    VariableTable::Instance()->SetValue(value_, value_);
+    VariableTable::Instance()->SetValue(id_, id_);
 }
 
 void Literal::Reduce(StatementElement* next)
@@ -19,7 +19,7 @@ void Literal::Reduce(StatementElement* next)
     GetPrev()->Reduce(this);
 }
 
-string Literal::GetValue() const
+string Literal::GetId() const
 {
-    return value_;
+    return id_;
 }

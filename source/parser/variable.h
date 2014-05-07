@@ -11,14 +11,14 @@ namespace tiny_au3
 class Variable : public StatementElement
 {
 public:
-    explicit Variable(const std::string& value);
+    explicit Variable(const std::string& id);
 
     virtual ~Variable() {};
     virtual void Reduce(StatementElement* next);
-    virtual std::string GetValue() const;
+    virtual std::string GetId() const;
 
 private:
-    std::string value_;
+    std::string id_;
 };
 
 }
