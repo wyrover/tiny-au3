@@ -5,6 +5,7 @@ set(lexer_SRCS
     lexer.cpp
     operator_table.cpp
     token.cpp
+    token_null.cpp
     token_factory.cpp
     token_literal.cpp
     token_operator.cpp

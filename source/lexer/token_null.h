@@ -13,17 +13,8 @@ class TokenNull : public Token
 public:
     virtual ~TokenNull() {};
 
-    virtual StatementElement* Produce() const
-    {
-        /* FIXME: Use NULL-object here */
-        return 0;
-    }
-
-    virtual bool IsComplete() const
-    {
-        return false;
-    }
-
+    virtual StatementElement* Produce() const;
+    virtual bool IsComplete() const;
     virtual void SetValue(const std::string& value) {};
 };
 
