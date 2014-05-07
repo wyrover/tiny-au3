@@ -24,7 +24,7 @@ public:
 
 private:
     static VariableTable* instance_;
-    VariableMap variables_;
+    mutable VariableMap variables_;
 
     VariableTable() {};
 };

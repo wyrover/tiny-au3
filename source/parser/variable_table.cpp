@@ -1,5 +1,7 @@
 #include "variable_table.h"
 
+#include <cassert>
+
 #include "functions.h"
 
 using namespace std;
@@ -30,6 +32,9 @@ void VariableTable::SetValue(const string& name, const std::string& value)
 
 string VariableTable::GetValue(const std::string& name) const
 {
-    /* FIXME: Implement this method */
-    return "";
+    string upper_name = StringToUpper(name);
+
+    assert( variables_.count(upper_name) != 0 );
+
+    return variables_[upper_name];
 }
