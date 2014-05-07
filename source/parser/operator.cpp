@@ -1,6 +1,6 @@
 #include "operator.h"
 
-#include <assert.h>
+#include <cassert>
 
 #include "operator_factory.h"
 

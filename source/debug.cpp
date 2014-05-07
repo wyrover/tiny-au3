@@ -1,9 +1,9 @@
 #include "debug.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include <assert.h>
+#include <cstdio>
+#include <cstring>
+#include <cstdarg>
+#include <cassert>
 
 using namespace std;
 using namespace tiny_au3;

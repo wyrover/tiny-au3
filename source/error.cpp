@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <stdio.h>
-#include <stdarg.h>
+#include <cstdio>
+#include <cstdarg>
 
 #include "types_tiny_au3.h"
 

@@ -1,6 +1,6 @@
 #include "literal.h"
 
-#include <assert.h>
+#include <cassert>
 
 #include "variable_table.h"
 
