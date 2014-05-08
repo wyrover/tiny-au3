@@ -14,7 +14,10 @@ public:
     static OperatorNull* Instance();
 
     virtual ~OperatorNull() {};
-    virtual void Reduce(StatementElement* lhs, StatementElement* rhs) {};
+    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs)
+    {
+        return lhs;
+    };
 
 private:
     static OperatorNull* instance_;

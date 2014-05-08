@@ -12,7 +12,7 @@ class OperatorMultiply : public OperatorImpl
 {
 public:
     virtual ~OperatorMultiply() {};
-    virtual void Reduce(StatementElement* lhs, StatementElement* rhs);
+    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs);
 };
 
 }

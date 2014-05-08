@@ -10,7 +10,7 @@ class OperatorImpl
 {
 public:
     virtual ~OperatorImpl() {};
-    virtual void Reduce(StatementElement* lhs, StatementElement* rhs) = 0;
+    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs) = 0;
 };
 
 }

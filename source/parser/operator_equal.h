@@ -12,7 +12,7 @@ class OperatorEqual : public OperatorImpl
 {
 public:
     virtual ~OperatorEqual() {};
-    virtual void Reduce(StatementElement* lhs, StatementElement* rhs);
+    virtual StatementElement* Reduce(StatementElement* lhs, StatementElement* rhs);
 };
 
 }

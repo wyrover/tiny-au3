@@ -18,7 +18,7 @@ Operator::Operator(const std::string& id)
 
 void Operator::Reduce(StatementElement* next)
 {
-    impl_->Reduce(GetPrev(), next);
+    StatementElement* result = impl_->Reduce(GetPrev(), next);
 
-    GetPrev()->Reduce(this);
+    result->Reduce(this);
 }
