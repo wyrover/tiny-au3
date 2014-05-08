@@ -1,2 +1,6 @@
+* tiny-au3 0.2
+	- Implementation of the lexical analysis and parsing
+	- Implementation of the assignment and multiplication operations
+
 * tiny-au3 0.1
 	- Base functional implementation
