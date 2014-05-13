@@ -43,7 +43,7 @@ void Lexer::Process(const string& line)
     if ( line.empty() || IsComment(line) )
         return;
 
-    Debug::Print("Lexer::Process() - %s\n", line.c_str());
+    DEBUG << "Lexer::Process() - " << line << endl;
 
     StringList words;
 

@@ -14,6 +14,8 @@ enum ErrorCode
     kKeywordError,
 };
 
+/* FIXME: This class is ineffective now.
+ * Remove it or make refactoring */
 class Error
 {
 public:

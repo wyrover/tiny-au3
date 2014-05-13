@@ -21,7 +21,7 @@ VariableTable* VariableTable::Instance()
 
 void VariableTable::SetValue(const string& name, const std::string& value)
 {
-    Debug::Print("VariableTable::SetValue() - name = %s value = %s\n",
+    DEBUG_PRINT("VariableTable::SetValue() - name = %s value = %s",
             name.c_str(), value.c_str());
 
     string upper_name = StringToUpper(name);
@@ -36,7 +36,7 @@ void VariableTable::SetValue(const string& name, const std::string& value)
 
 string VariableTable::GetValue(const std::string& name) const
 {
-    Debug::Print("VariableTable::GetValue() - name = %s\n",
+    DEBUG_PRINT("VariableTable::GetValue() - name = %s",
             name.c_str());
 
     string upper_name = StringToUpper(name);

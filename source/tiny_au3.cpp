@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     if ( options.IsOptionExist("-l") )
         log_file = options.GetString("-l");
 
-    Debug::Init(log_file);
+    DEBUG_PTR->SetLogfile(log_file);
 
     Script script(input_file);
 

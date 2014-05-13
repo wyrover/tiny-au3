@@ -3,17 +3,27 @@
 
 #include <fstream>
 
+#define DEBUG_PTR Debug::Instance()
+#define DEBUG *DEBUG_PTR
+#define DEBUG_PRINT DEBUG_PTR->Print
+
 namespace tiny_au3
 {
 
 class Debug
 {
 public:
-    static void Init(const std::string& log_file);
-    static void Print(const char* fmt, ...);
+    static Debug* Instance();
+
+    void SetLogfile(const std::string& log_file);
+    void Print(const char* fmt, ...);
+    std::ostream& operator<<(const std::string& value);
 
 private:
-    static std::ofstream file_;
+    static Debug* instance_;
+    std::ofstream file_;
+
+    Debug() {};
 };
 
 }

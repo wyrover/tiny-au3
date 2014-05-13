@@ -10,11 +10,22 @@ using namespace tiny_au3;
 
 static const string kDefaultLogfile = "/dev/null";
 
-ofstream Debug::file_;
+Debug* Debug::instance_ = NULL;
 
-void Debug::Init(const string& log_file)
+Debug* Debug::Instance()
+{
+    if (instance_ == NULL)
+        instance_ = new Debug();
+
+    return instance_;
+}
+
+void Debug::SetLogfile(const string& log_file)
 {
 #ifdef __DEBUG__
+    if ( file_.is_open() )
+        return;
+
     if ( ! log_file.empty() )
         file_.open(log_file.c_str(), ios::out | ios::app);
     else
@@ -31,7 +42,15 @@ void Debug::Print(const char* fmt, ...)
     va_start(arg_list, fmt);
     vsprintf(buf, fmt, arg_list);
 
-    file_ << buf;
+    file_ << buf << endl;
     va_end(arg_list);
+#endif
+}
+
+ostream& Debug::operator<<(const string& value)
+{
+#ifdef __DEBUG__
+    file_ << value << endl;
+    return file_;
 #endif
 }
