@@ -27,9 +27,7 @@ void VariableTable::SetValue(const string& name, const std::string& value)
     string upper_name = StringToUpper(name);
 
     if ( variables_.count(upper_name) == 0 )
-    {
         variables_.insert(VariableMap::value_type(upper_name, value));
-    }
     else
         variables_[upper_name] = value;
 }
@@ -41,7 +39,9 @@ string VariableTable::GetValue(const std::string& name) const
 
     string upper_name = StringToUpper(name);
 
-    assert( variables_.count(upper_name) != 0 );
-
-    return variables_[upper_name];
+    /* FIXME: Bash-style return empty string for the undefind variable */
+    if ( variables_.count(upper_name) != 0 )
+        return variables_[upper_name];
+    else
+        return string("");
 }

@@ -50,6 +50,7 @@ void Debug::Print(const char* fmt, ...)
 ostream& Debug::operator<<(const string& value)
 {
 #ifdef __DEBUG__
+    assert( file_.is_open() );
     file_ << value << endl;
     return file_;
 #endif
