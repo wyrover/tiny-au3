@@ -2,5 +2,15 @@
 
 . clean.sh
 
-../source/tiny-au3 -l debug1.log -i assignment.au3
-../source/tiny-au3 -l debug2.log -i operator.au3
+
+run_test()
+{
+    TEST="$1"
+
+    ../source/tiny-au3 -l $TEST.log -i $TEST.au3
+}
+
+
+run_test "assignment"
+run_test "operator"
+run_test "if-statement"
